@@ -6,22 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://www.mgwcode.com">
-  <title>Windows Server 2012部署Django项目 | 个人博客</title>
+  <title>MySQL数据库连接查询 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="应实际需求，特记于此，以备忘">
-<meta name="keywords" content="Project deployment">
+  <meta name="description" content="基于sql99标准：推荐 1. 准备数据1234567891011121314151617181920212223242526create database learn charset utf8;use learncreate table students(	id int not null primary key auto_increment,    name varchar(10),    ag">
+<meta name="keywords" content="mysql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Windows Server 2012部署Django项目">
-<meta property="og:url" content="http://www.mgwcode.com/2019/08/18/Windows-Server-2012部署Django项目/index.html">
+<meta property="og:title" content="MySQL数据库连接查询">
+<meta property="og:url" content="http://www.mgwcode.com/2019/08/18/MySQL数据库连接查询/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="应实际需求，特记于此，以备忘">
+<meta property="og:description" content="基于sql99标准：推荐 1. 准备数据1234567891011121314151617181920212223242526create database learn charset utf8;use learncreate table students(	id int not null primary key auto_increment,    name varchar(10),    ag">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://www.mgwcode.com/images/article_image/2019.09/mod_wsgi.png">
-<meta property="og:updated_time" content="2019-08-18T02:52:35.992Z">
+<meta property="og:image" content="d:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cmysql_cross_join.png">
+<meta property="og:image" content="d:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cinner_join.png">
+<meta property="og:image" content="d:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cleft_join.png">
+<meta property="og:image" content="d:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cright_join.png">
+<meta property="og:updated_time" content="2019-08-18T14:19:05.086Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Windows Server 2012部署Django项目">
-<meta name="twitter:description" content="应实际需求，特记于此，以备忘">
-<meta name="twitter:image" content="http://www.mgwcode.com/images/article_image/2019.09/mod_wsgi.png">
+<meta name="twitter:title" content="MySQL数据库连接查询">
+<meta name="twitter:description" content="基于sql99标准：推荐 1. 准备数据1234567891011121314151617181920212223242526create database learn charset utf8;use learncreate table students(	id int not null primary key auto_increment,    name varchar(10),    ag">
+<meta name="twitter:image" content="d:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cmysql_cross_join.png">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -171,20 +174,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Windows-Server-2012部署Django项目" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-MySQL数据库连接查询" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Windows Server 2012部署Django项目
+      MySQL数据库连接查询
     </h1>
   
 
         
-        <a href="/2019/08/18/Windows-Server-2012部署Django项目/" class="archive-article-date">
-  	<time datetime="2019-08-18T00:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-18</time>
+        <a href="/2019/08/18/MySQL数据库连接查询/" class="archive-article-date">
+  	<time datetime="2019-08-18T11:52:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-18</time>
 </a>
 
 	<!-- 不蒜子统计 -->
@@ -195,67 +198,40 @@
         
       </header>
       <div align="center" class="post-count">
-        字数：722字 | 预计阅读时长：3分钟
+        字数：323字 | 预计阅读时长：1分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>应实际需求，特记于此，以备忘</p>
-<a id="more"></a>
+        <p>基于sql99标准：推荐</p>
+<h3 id="1-准备数据"><a href="#1-准备数据" class="headerlink" title="1. 准备数据"></a>1. 准备数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">create database learn charset utf8;</span><br><span class="line"></span><br><span class="line">use learn</span><br><span class="line"></span><br><span class="line">create table students(</span><br><span class="line">	id int not null primary key auto_increment,</span><br><span class="line">    name varchar(10),</span><br><span class="line">    age int,</span><br><span class="line">    course_id int</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">create table course(</span><br><span class="line">	id int not null primary key auto_increment,</span><br><span class="line">    course_name varchar(20),</span><br><span class="line">    stu_id int</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">insert into students values(1, &quot;小明&quot;, 19, 1);</span><br><span class="line">insert into students values(2, &quot;小花&quot;, 19, 2);</span><br><span class="line">insert into students values(3, &quot;小菜&quot;, 20, null);</span><br><span class="line"></span><br><span class="line">insert into course values(1, &quot;python入门到放弃&quot;, 1);</span><br><span class="line">insert into course values(2, &quot;mysql从删库到跑路&quot;, 2);</span><br><span class="line">insert into course values(3, &quot;c语言入门&quot;, null);</span><br><span class="line">insert into course values(4, &quot;数据结构&quot;, null);</span><br></pre></td></tr></table></figure>
 
-<p>[TOC]</p>
-<p>环境：</p>
-<blockquote>
-<ol>
-<li>Windows Server 2012</li>
-<li>Apache 2.4</li>
-<li>python 3.6</li>
-<li>Django 1.11</li>
-<li>mysql 5.7</li>
+<p>查看表结构：<code>desc TABLE_NAME</code> ;</p>
+<h4 id="2-连接查询"><a href="#2-连接查询" class="headerlink" title="2. 连接查询"></a>2. 连接查询</h4><blockquote>
+<p>1.一共一下几种</p>
+</blockquote>
+<p>自连接</p>
+<p>内连接</p>
+<p>左外连接</p>
+<p>右外连接</p>
+<p>全外连接</p>
+<p>1.自连接 <code>cross join</code> -&gt;笛卡尔积</p>
+<p><code>select * from students cross join course;</code>  </p>
+<p><img src="D:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cmysql_cross_join.png" alt="cross_join"></p>
+<p>2.内连接: <code>inner join</code> -&gt;也就是求交集</p>
+<p><code>select * from students as s inner join course c where s.id=c.stu_id;</code></p>
+<p><img src="D:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cinner_join.png" alt="inner_join"></p>
+<ol start="3">
+<li>左外连接 <code>left outer join</code> -&gt;右表中没有得数据用null填充</li>
 </ol>
-</blockquote>
-<h4 id="1-安装所需环境"><a href="#1-安装所需环境" class="headerlink" title="1. 安装所需环境"></a>1. 安装所需环境</h4><ol>
-<li>python，Django，mysql已经安装完成</li>
-<li>Apache，下载<a href="http://httpd.apache.org/" target="_blank" rel="noopener">地址</a>, 现在完成之后解压到 <code>C:\Apache24</code> , apache <a href="http://httpd.apache.org/docs/current/platform/windows.html#down" target="_blank" rel="noopener">帮助文档</a></li>
-<li>官网没有64位版本，可以在这个地址<a href="https://www.apachelounge.com/download/" target="_blank" rel="noopener">下载</a></li>
-</ol>
-<h4 id="2-配置Apache"><a href="#2-配置Apache" class="headerlink" title="2. 配置Apache"></a>2. 配置Apache</h4><p>进入<code>C:\Apache24\conf</code> 这是Apache服务气的配置文件夹，修改<code>httpd.conf</code>文件，使用VSCode打开，Ctrl+f 搜索<code>Define SRVROOT</code>,并修改项目配置</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Define SRVROOT <span class="string">"C:\Apache24"</span>  <span class="comment">#Apache24文件的路径，其余不用改。</span></span><br><span class="line">ServerRoot <span class="string">"$&#123;SRVROOT&#125;"</span></span><br><span class="line">Listen IP:PORT <span class="comment">#需要部署到服务器的ip和端口号</span></span><br><span class="line">ServerName IP:PORT <span class="comment">#需要部署到服务器的ip和端口号</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="3-创建Apache服务"><a href="#3-创建Apache服务" class="headerlink" title="3. 创建Apache服务"></a>3. 创建Apache服务</h4><p>进入<code>C:\Apache24\bin</code> 目录，使用管理员身份运行cmd命令行，输入以下代码：</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">httpd.exe -k install -n <span class="string">"apache2.4"</span>  <span class="comment"># -n参数给服务起别名，apache2.4是所创建服务器名称，也可不写，使用默认的。</span></span><br></pre></td></tr></table></figure>
-
-<p>出现successfully installed，安装成功</p>
-<blockquote>
-<p>打开浏览器输入对应的ip，看到Apache欢迎页面，启动完成</p>
-</blockquote>
-<h4 id="4-安装mod-wsgi"><a href="#4-安装mod-wsgi" class="headerlink" title="4. 安装mod_wsgi"></a>4. 安装mod_wsgi</h4><p><a href="https://blog.csdn.net/weiyuanke/article/details/7696670" target="_blank" rel="noopener">什么是mod_wsgi</a></p>
-<p>mod_wsgi的目标是实现一个简单的Apache模块，支持任何Python WSGI的接口的Python应用程序的托管。该模块适用于高性能生产的WEB站点，同时也适用于自己维护站点的WEB 服务托管（虚拟主机环境–译者注）。</p>
-<p><a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/#mod_wsgi" target="_blank" rel="noopener">下载地址</a> 版本说明：</p>
-<p>ap24vc14 表示<code>Apache2.4VC14</code>版本，cp36表示python3.6，amd64表示64位</p>
-<p><img src="/images/article_image/2019.09/mod_wsgi.png" alt="mod_wsgi"></p>
-<p><strong>注意：下载对应版本要匹配</strong></p>
-<p>下载之后：</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install <span class="string">"mod_wsgi-4.5.24+ap24vc14-cp36-cp36m-win_amd64.whl"</span></span><br></pre></td></tr></table></figure>
-
-<p>安装成功之后：</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mod_wsgi-express module-config</span><br></pre></td></tr></table></figure>
-
-<p>可以得到相关环境的安装地址：</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LoadFile <span class="string">"c:/users/my/appdata/local/programs/python/python36/python36.dll"</span></span><br><span class="line">LoadModule wsgi_module <span class="string">"c:/users/my/appdata/local/programs/python/python36/lib/site-packages/mod_wsgi/server/mod_wsgi.cp36-win_amd64.pyd"</span></span><br><span class="line">WSGIPythonHome <span class="string">"c:/users/my/appdata/local/programs/python/python36"</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="5-配置Django项目"><a href="#5-配置Django项目" class="headerlink" title="5. 配置Django项目"></a>5. 配置Django项目</h4><p>打开httpd.conf，在该文件末尾加入以下内容(也可以使用Include进行引入,任选其一即可)：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">LoadFile <span class="string">"c:/users/my/appdata/local/programs/python/python36/python36.dll"</span></span><br><span class="line">LoadModule wsgi_module <span class="string">"c:/users/my/appdata/local/programs/python/python36/lib/site-packages/mod_wsgi/server/mod_wsgi.cp36-win_amd64.pyd"</span></span><br><span class="line">WSGIPythonHome <span class="string">"c:/users/my/appdata/local/programs/python/python36"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#设置工程中的wsgi路径</span></span><br><span class="line">WSGIScriptAlias / C:\Apache24\sites\yikuang\yikuang\wsgi.py</span><br><span class="line"><span class="comment">#设置工程路径</span></span><br><span class="line">WSGIPythonPath C:\Apache24\sites\yikuang\yikuang</span><br><span class="line"><span class="comment">#设置wsgi路径</span></span><br><span class="line">&lt;Directory C:\Apache24\sites\yikuang\yikuang\wsgi.py&gt;</span><br><span class="line">    &lt;Files wsgi.py&gt;</span><br><span class="line">        Require all granted</span><br><span class="line">    &lt;/Files&gt;</span><br><span class="line">&lt;/Directory&gt;</span><br><span class="line"><span class="comment">#设置静态文件路径</span></span><br><span class="line">Alias /static C:\Apache24\sites\yikuang\yikuang\static</span><br><span class="line">&lt;Directory C:\Apache24\sites\yikuang\yikuang\static&gt;  </span><br><span class="line">    AllowOverride <span class="literal">None</span>  </span><br><span class="line">    Options <span class="literal">None</span>  </span><br><span class="line">    Require all granted  </span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>使用Include引入的方式:</p>
-</blockquote>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Include sites/yikuang/yikuang.conf  <span class="comment"># 此方式将上面的代码不再追加到httpd.conf中，另外创建配置文件，并写入</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="6-重启服务"><a href="#6-重启服务" class="headerlink" title="6. 重启服务"></a>6. 重启服务</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">httpd.exe -k restart</span><br></pre></td></tr></table></figure>
-
-<h4 id="7-测试是否成功"><a href="#7-测试是否成功" class="headerlink" title="7. 测试是否成功"></a>7. 测试是否成功</h4><p>打开浏览器，输入正确的IP及端口号, 部署成功！</p>
-<p>参考：<a href="https://blog.csdn.net/weiyuanke/article/details/7696670" target="_blank" rel="noopener">https://blog.csdn.net/weiyuanke/article/details/7696670</a></p>
+<p><code>select * from students as s left join course c on s.id=c.stu_id;</code> </p>
+<p><img src="D:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cleft_join.png" alt="left_join"></p>
+<p>4.右外连接<code>right outer join</code> -&gt; 左表中没有的使用null填充</p>
+<p><code>select * from students as s right join course c on s.id=c.stu_id;</code></p>
+<p><img src="D:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cright_join.png" alt="right_join"></p>
+<p>5.全外连接<code>full outer join</code> -&gt; mysql 不支持</p>
+<p><code>select * from students as s full outerjoin course c on s.id=c.stu_id;</code></p>
+<p>写完了，似乎没什么意义。。。</p>
 
       
 
@@ -290,7 +266,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Project deployment</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
         		</li>
       		
 		</ul>
@@ -346,7 +322,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://www.mgwcode.com/2019/08/18/Windows-Server-2012部署Django项目/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://www.mgwcode.com/2019/08/18/MySQL数据库连接查询/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -360,18 +336,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/08/18/MySQL数据库连接查询/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          MySQL数据库连接查询
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/08/09/hadoop学习笔记/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">hadoop学习笔记</div>
+    <a href="/2019/08/18/Windows-Server-2012部署Django项目/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Windows Server 2012部署Django项目</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -398,7 +365,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-安装所需环境"><span class="toc-number">1.</span> <span class="toc-text">1. 安装所需环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-配置Apache"><span class="toc-number">2.</span> <span class="toc-text">2. 配置Apache</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-创建Apache服务"><span class="toc-number">3.</span> <span class="toc-text">3. 创建Apache服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-安装mod-wsgi"><span class="toc-number">4.</span> <span class="toc-text">4. 安装mod_wsgi</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-配置Django项目"><span class="toc-number">5.</span> <span class="toc-text">5. 配置Django项目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-重启服务"><span class="toc-number">6.</span> <span class="toc-text">6. 重启服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-测试是否成功"><span class="toc-number">7.</span> <span class="toc-text">7. 测试是否成功</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-准备数据"><span class="toc-number">1.</span> <span class="toc-text">1. 准备数据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-连接查询"><span class="toc-number">1.1.</span> <span class="toc-text">2. 连接查询</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>

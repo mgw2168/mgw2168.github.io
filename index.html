@@ -68,7 +68,7 @@
 			</ul>
 		</nav>
 		<nav> 
-			总文章数 3
+			总文章数 4
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -168,6 +168,112 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-MySQL数据库连接查询" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/18/MySQL数据库连接查询/">MySQL数据库连接查询</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/18/MySQL数据库连接查询/" class="archive-article-date">
+  	<time datetime="2019-08-18T11:52:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-18</time>
+</a>
+
+        
+      </header>
+      <div align="center" class="post-count">
+        字数：323字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>基于sql99标准：推荐</p>
+<h3 id="1-准备数据"><a href="#1-准备数据" class="headerlink" title="1. 准备数据"></a>1. 准备数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">create database learn charset utf8;</span><br><span class="line"></span><br><span class="line">use learn</span><br><span class="line"></span><br><span class="line">create table students(</span><br><span class="line">	id int not null primary key auto_increment,</span><br><span class="line">    name varchar(10),</span><br><span class="line">    age int,</span><br><span class="line">    course_id int</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">create table course(</span><br><span class="line">	id int not null primary key auto_increment,</span><br><span class="line">    course_name varchar(20),</span><br><span class="line">    stu_id int</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">insert into students values(1, &quot;小明&quot;, 19, 1);</span><br><span class="line">insert into students values(2, &quot;小花&quot;, 19, 2);</span><br><span class="line">insert into students values(3, &quot;小菜&quot;, 20, null);</span><br><span class="line"></span><br><span class="line">insert into course values(1, &quot;python入门到放弃&quot;, 1);</span><br><span class="line">insert into course values(2, &quot;mysql从删库到跑路&quot;, 2);</span><br><span class="line">insert into course values(3, &quot;c语言入门&quot;, null);</span><br><span class="line">insert into course values(4, &quot;数据结构&quot;, null);</span><br></pre></td></tr></table></figure>
+
+<p>查看表结构：<code>desc TABLE_NAME</code> ;</p>
+<h4 id="2-连接查询"><a href="#2-连接查询" class="headerlink" title="2. 连接查询"></a>2. 连接查询</h4><blockquote>
+<p>1.一共一下几种</p>
+</blockquote>
+<p>自连接</p>
+<p>内连接</p>
+<p>左外连接</p>
+<p>右外连接</p>
+<p>全外连接</p>
+<p>1.自连接 <code>cross join</code> -&gt;笛卡尔积</p>
+<p><code>select * from students cross join course;</code>  </p>
+<p><img src="D:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cmysql_cross_join.png" alt="cross_join"></p>
+<p>2.内连接: <code>inner join</code> -&gt;也就是求交集</p>
+<p><code>select * from students as s inner join course c where s.id=c.stu_id;</code></p>
+<p><img src="D:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cinner_join.png" alt="inner_join"></p>
+<ol start="3">
+<li>左外连接 <code>left outer join</code> -&gt;右表中没有得数据用null填充</li>
+</ol>
+<p><code>select * from students as s left join course c on s.id=c.stu_id;</code> </p>
+<p><img src="D:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cleft_join.png" alt="left_join"></p>
+<p>4.右外连接<code>right outer join</code> -&gt; 左表中没有的使用null填充</p>
+<p><code>select * from students as s right join course c on s.id=c.stu_id;</code></p>
+<p><img src="D:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cright_join.png" alt="right_join"></p>
+<p>5.全外连接<code>full outer join</code> -&gt; mysql 不支持</p>
+<p><code>select * from students as s full outerjoin course c on s.id=c.stu_id;</code></p>
+<p>写完了，似乎没什么意义。。。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/18/MySQL数据库连接查询/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Windows-Server-2012部署Django项目" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -486,6 +592,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Project deployment</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
             
             <div class="clearfix"></div>
