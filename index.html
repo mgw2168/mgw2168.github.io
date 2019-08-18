@@ -190,7 +190,7 @@
 
       </header>
       <div align="center" class="post-count">
-        字数：725字 | 预计阅读时长：3分钟
+        字数：722字 | 预计阅读时长：3分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -226,7 +226,7 @@
 <p>mod_wsgi的目标是实现一个简单的Apache模块，支持任何Python WSGI的接口的Python应用程序的托管。该模块适用于高性能生产的WEB站点，同时也适用于自己维护站点的WEB 服务托管（虚拟主机环境–译者注）。</p>
 <p><a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/#mod_wsgi" target="_blank" rel="noopener">下载地址</a> 版本说明：</p>
 <p>ap24vc14 表示<code>Apache2.4VC14</code>版本，cp36表示python3.6，amd64表示64位</p>
-<p><img src="D:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cmod_wsgi.png" alt="mod_wsgi"></p>
+<p><img src="%5Cimages%5Carticle_image%5C2019.09%5Cmod_wsgi.png" alt="mod_wsgi"></p>
 <p><strong>注意：下载对应版本要匹配</strong></p>
 <p>下载之后：</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install <span class="string">"mod_wsgi-4.5.24+ap24vc14-cp36-cp36m-win_amd64.whl"</span></span><br></pre></td></tr></table></figure>
@@ -242,8 +242,9 @@
 
 <blockquote>
 <p>使用Include引入的方式:</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; Include sites/yikuang/yikuang.conf  <span class="comment"># 此方式将上面的代码不再追加到httpd.conf中，另外创建配置文件，并写入</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Include sites/yikuang/yikuang.conf  <span class="comment"># 此方式将上面的代码不再追加到httpd.conf中，另外创建配置文件，并写入</span></span><br></pre></td></tr></table></figure>
+
 <h4 id="6-重启服务"><a href="#6-重启服务" class="headerlink" title="6. 重启服务"></a>6. 重启服务</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">httpd.exe -k restart</span><br></pre></td></tr></table></figure>
 
 <h4 id="7-测试是否成功"><a href="#7-测试是否成功" class="headerlink" title="7. 测试是否成功"></a>7. 测试是否成功</h4><p>打开浏览器，输入正确的IP及端口号, 部署成功！</p>
