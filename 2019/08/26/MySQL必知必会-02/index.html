@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://www.mgwcode.com">
-  <title>Tag: Project deployment | 个人博客</title>
+  <title>MySQL必知必会-02 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="做有意思的人，做有意思的事">
-<meta property="og:type" content="website">
-<meta property="og:title" content="个人博客">
-<meta property="og:url" content="http://www.mgwcode.com/tags/Project-deployment/index.html">
+  <meta name="description" content="1.子查询1.查询每个用户的订单总数  分析：  查询id为1的用户的订单总数   1select count(*) from order_info where id=1;    查询每个用户的订单数   1234567select id, username(select count(*)     from order_info    where order_info.user_id=users.">
+<meta name="keywords" content="MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL必知必会-02">
+<meta property="og:url" content="http://www.mgwcode.com/2019/08/26/MySQL必知必会-02/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="做有意思的人，做有意思的事">
+<meta property="og:description" content="1.子查询1.查询每个用户的订单总数  分析：  查询id为1的用户的订单总数   1select count(*) from order_info where id=1;    查询每个用户的订单数   1234567select id, username(select count(*)     from order_info    where order_info.user_id=users.">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-26T12:41:51.536Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="个人博客">
-<meta name="twitter:description" content="做有意思的人，做有意思的事">
+<meta name="twitter:title" content="MySQL必知必会-02">
+<meta name="twitter:description" content="1.子查询1.查询每个用户的订单总数  分析：  查询id为1的用户的订单总数   1select count(*) from order_info where id=1;    查询每个用户的订单数   1234567select id, username(select count(*)     from order_info    where order_info.user_id=users.">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -167,61 +169,291 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-MySQL必知必会-02" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/18/Windows-Server-2012部署Django项目/" class="archive-article-date">
-  	<time datetime="2019-08-18T00:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-18</time>
-</a>
-
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/18/Windows-Server-2012部署Django项目/">Windows Server 2012部署Django项目</a>
+    <h1 class="article-title" itemprop="name">
+      MySQL必知必会-02
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/08/26/MySQL必知必会-02/" class="archive-article-date">
+  	<time datetime="2019-08-26T12:39:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-26</time>
+</a>
+
+	<!-- 不蒜子统计 -->
+	<span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+		  <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+        
+      </header>
+      <div align="center" class="post-count">
+        字数：785字 | 预计阅读时长：3分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-子查询"><a href="#1-子查询" class="headerlink" title="1.子查询"></a>1.子查询</h3><p>1.查询每个用户的订单总数</p>
+<blockquote>
+<p>分析：</p>
+<ul>
+<li>查询id为1的用户的订单总数</li>
+</ul>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> order_info <span class="keyword">where</span> <span class="keyword">id</span>=<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>查询每个用户的订单数</li>
+</ul>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span>, username</span><br><span class="line">(<span class="keyword">select</span> <span class="keyword">count</span>(*) </span><br><span class="line">    <span class="keyword">from</span> order_info</span><br><span class="line">    <span class="keyword">where</span> order_info.user_id=users.id</span><br><span class="line">    ) <span class="keyword">as</span> orders</span><br><span class="line"><span class="keyword">from</span> <span class="keyword">users</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> username;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-组合查询"><a href="#2-组合查询" class="headerlink" title="2.组合查询"></a>2.组合查询</h3><p>1.使用union</p>
+<pre><code>union必须由两条或者两条以上的select语句组成
+union的每个查询必须包含相同的列，表达式或者聚集函数，但是各个列可以按照不同的列给出
+
+union自动去除重复的行
+如果要返回所有的匹配行，可以使用 union all，即不取消重复的行</code></pre><p>2.对组合查询结果集排序</p>
+<pre><code>使用排序必须将order by放在最后一个select语句后面</code></pre><h3 id="3-全文搜索"><a href="#3-全文搜索" class="headerlink" title="3.全文搜索"></a>3.全文搜索</h3><p>1.MyISAM支持全文索引，InnoDB不支持</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建致辞全文本搜索的表</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> products(</span><br><span class="line"><span class="keyword">id</span> <span class="built_in">int</span> auto_increment,</span><br><span class="line"><span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">10</span>),</span><br><span class="line">user_id <span class="built_in">int</span>,</span><br><span class="line">create_time datetime,</span><br><span class="line">note_text <span class="built_in">text</span>,</span><br><span class="line"><span class="comment"># 指定索引类型</span></span><br><span class="line">primary <span class="keyword">key</span>(<span class="keyword">id</span>),</span><br><span class="line">fulltext(note_text)</span><br><span class="line">) <span class="keyword">engine</span>=MyISAM;</span><br></pre></td></tr></table></figure>
+
+<p>举例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Match()指定被搜索的列，Against()指定要使用的搜索表达式</span></span><br><span class="line"><span class="keyword">select</span> note_text</span><br><span class="line"><span class="keyword">from</span> products</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">Match</span>(note_text) Against(<span class="string">'rabbit'</span>);</span><br></pre></td></tr></table></figure>
+
+<p>使用扩展：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> note_text</span><br><span class="line"><span class="keyword">from</span> products</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">Match</span>(note_text) Against(<span class="string">'rabbit'</span> <span class="keyword">with</span> <span class="keyword">query</span> expansion);</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-布尔文本搜索"><a href="#4-布尔文本搜索" class="headerlink" title="4.布尔文本搜索"></a>4.布尔文本搜索</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 性能较低，随着数据量的增多而降低</span></span><br><span class="line"><span class="keyword">select</span> note_text</span><br><span class="line"><span class="keyword">from</span> products</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">Match</span>(note_text) Against(<span class="string">'rabbit'</span> <span class="keyword">in</span> <span class="built_in">boolean</span> <span class="keyword">mode</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-插入数据"><a href="#5-插入数据" class="headerlink" title="5.插入数据"></a>5.插入数据</h3><p>因为insert插入比较耗时，所以进行插入时可以指定low_priority来降低优先级</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">low_priority</span> <span class="keyword">into</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>insert select</p>
+</blockquote>
+<p>将一个select语句的执行结果作为数据插入</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> course(<span class="keyword">id</span>, course_name, stu_id) <span class="keyword">select</span> <span class="keyword">id</span>, course_name, stu_id <span class="keyword">from</span> course_out;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-更新数据"><a href="#6-更新数据" class="headerlink" title="6.更新数据"></a>6.更新数据</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">执行<span class="keyword">update</span>是，若要更新多个字段的值，则在<span class="keyword">set</span>后面多加几条需要修改的字段</span><br><span class="line"></span><br><span class="line"><span class="keyword">update</span> students <span class="keyword">set</span> <span class="keyword">name</span>=<span class="string">"张三"</span>, age=<span class="number">23</span> <span class="keyword">where</span> <span class="keyword">id</span>=<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>ignore关键字：</strong><br>如果使用update更新多行数据时，中途出现错误，则会导致整个update被取消</p>
+<p>若要使它发生错误，继续更新，则需要使用ignore关键字：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> <span class="keyword">ignore</span> students...</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-删除数据"><a href="#7-删除数据" class="headerlink" title="7.删除数据"></a>7.删除数据</h3><p>若要更快的删除表中的所有数据</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">truncate</span> <span class="keyword">table</span></span><br><span class="line">其实<span class="keyword">truncate</span>是删除原来的表并重新创建一个新表，不是逐行删除数据的</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-创建表"><a href="#8-创建表" class="headerlink" title="8.创建表"></a>8.创建表</h3><p>如果不存在则创建表;</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> xxx <span class="keyword">if</span> <span class="keyword">not</span> exists...</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-主键"><a href="#9-主键" class="headerlink" title="9.主键"></a>9.主键</h3><p>主键必须唯一，并且不能为null，若有多个列，则这些列的组合列必须唯一</p>
+<h3 id="10-默认值"><a href="#10-默认值" class="headerlink" title="10.默认值"></a>10.默认值</h3><p>mysql和其他DBMS一样，不允许使用函数作为默认值</p>
+<p>使用默认值，而不是null列，特别是用于计算或者数据分组的列</p>
+<h3 id="11-外键不能跨引擎"><a href="#11-外键不能跨引擎" class="headerlink" title="11.外键不能跨引擎"></a>11.外键不能跨引擎</h3><ul>
+<li>混用引擎的最大缺陷是外键不能跨引擎</li>
+<li>即使使用同一个引擎的表不能引用使用不同引擎的表的外键</li>
+</ul>
+<h3 id="12-修改表结构"><a href="#12-修改表结构" class="headerlink" title="12.修改表结构"></a>12.修改表结构</h3><blockquote>
+<p>1.添加字段</p>
+</blockquote>
+<p>alter table xxx add xxx 类型，约束等;</p>
+<blockquote>
+<p>2.删除表字段</p>
+</blockquote>
+<p>alter table xxx drop column xxx;</p>
+<blockquote>
+<p>3.修改字段类型</p>
+</blockquote>
+<p>alter table xxx modify xxx 类型，约束;</p>
+<blockquote>
+<p>4.修改字段名</p>
+</blockquote>
+<p>alter table 表名 change 旧字段名 新字段名 类型，约束;</p>
+<h3 id="13-修改表名"><a href="#13-修改表名" class="headerlink" title="13.修改表名"></a>13.修改表名</h3><p>rename table old_name to new_name;</p>
+<blockquote>
+<p>多个表重命名：</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">rename</span> <span class="keyword">table</span> </span><br><span class="line">old_name1 <span class="keyword">to</span> new_name1，</span><br><span class="line">old_name2 <span class="keyword">to</span> new_name2，</span><br><span class="line">...;</span><br></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Project deployment</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://www.mgwcode.com/2019/08/26/MySQL必知必会-02/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/08/26/MySQL必知必会-01/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MySQL必知必会-01</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-子查询"><span class="toc-number">1.</span> <span class="toc-text">1.子查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-组合查询"><span class="toc-number">2.</span> <span class="toc-text">2.组合查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-全文搜索"><span class="toc-number">3.</span> <span class="toc-text">3.全文搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-布尔文本搜索"><span class="toc-number">4.</span> <span class="toc-text">4.布尔文本搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-插入数据"><span class="toc-number">5.</span> <span class="toc-text">5.插入数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-更新数据"><span class="toc-number">6.</span> <span class="toc-text">6.更新数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-删除数据"><span class="toc-number">7.</span> <span class="toc-text">7.删除数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-创建表"><span class="toc-number">8.</span> <span class="toc-text">8.创建表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-主键"><span class="toc-number">9.</span> <span class="toc-text">9.主键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-默认值"><span class="toc-number">10.</span> <span class="toc-text">10.默认值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-外键不能跨引擎"><span class="toc-number">11.</span> <span class="toc-text">11.外键不能跨引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-修改表结构"><span class="toc-number">12.</span> <span class="toc-text">12.修改表结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-修改表名"><span class="toc-number">13.</span> <span class="toc-text">13.修改表名</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
+  
+  <!-- 来必力评论 -->
+  
+    <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80NTkyOS8yMjQ0MA==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -256,9 +488,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
