@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://www.mgwcode.com">
   <title>MySQL必知必会-02 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.子查询1.查询每个用户的订单总数  分析：  查询id为1的用户的订单总数   1select count(*) from order_info where id=1;    查询每个用户的订单数   1234567select id, username(select count(*)     from order_info    where order_info.user_id=users.">
+  <meta name="description" content="1.子查询">
 <meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL必知必会-02">
 <meta property="og:url" content="http://www.mgwcode.com/2019/08/26/MySQL必知必会-02/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="1.子查询1.查询每个用户的订单总数  分析：  查询id为1的用户的订单总数   1select count(*) from order_info where id=1;    查询每个用户的订单数   1234567select id, username(select count(*)     from order_info    where order_info.user_id=users.">
+<meta property="og:description" content="1.子查询">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-26T12:41:51.536Z">
+<meta property="og:updated_time" content="2019-08-26T12:43:04.293Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL必知必会-02">
-<meta name="twitter:description" content="1.子查询1.查询每个用户的订单总数  分析：  查询id为1的用户的订单总数   1select count(*) from order_info where id=1;    查询每个用户的订单数   1234567select id, username(select count(*)     from order_info    where order_info.user_id=users.">
+<meta name="twitter:description" content="1.子查询">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -198,7 +198,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-子查询"><a href="#1-子查询" class="headerlink" title="1.子查询"></a>1.子查询</h3><p>1.查询每个用户的订单总数</p>
+        <h3 id="1-子查询"><a href="#1-子查询" class="headerlink" title="1.子查询"></a>1.子查询</h3><a id="more"></a>
+
+<p>1.查询每个用户的订单总数</p>
 <blockquote>
 <p>分析：</p>
 <ul>
