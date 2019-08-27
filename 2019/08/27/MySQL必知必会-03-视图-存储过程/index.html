@@ -6,25 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://www.mgwcode.com">
-  <title>MySQL数据库连接查询 | 个人博客</title>
+  <title>MySQL必知必会-03-视图-存储过程 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="基于sql99标准：推荐">
-<meta name="keywords" content="mysql">
+  <meta name="description" content="1.视图视图是虚拟的表，它只包含使用时动态检索数据的查询 1.为什么使用视图 重用SQL语句 简化复杂的SQL操作。在编写查询后可以重用而不用知道它的基本查询细节 使用表的组成部分，而不是整个表 保护数据，可以给用户授予表的特定部分，而不是整个表的访问权限 更改数据格式和表示，视图可返回与底层表的表示和格式不同的数据  因为视图本身不包含数据，它的数据是使用时动态查询的，所以造成性能问题: 如果用">
+<meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL数据库连接查询">
-<meta property="og:url" content="http://www.mgwcode.com/2019/08/18/MySQL数据库连接查询/index.html">
+<meta property="og:title" content="MySQL必知必会-03-视图-存储过程">
+<meta property="og:url" content="http://www.mgwcode.com/2019/08/27/MySQL必知必会-03-视图-存储过程/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="基于sql99标准：推荐">
+<meta property="og:description" content="1.视图视图是虚拟的表，它只包含使用时动态检索数据的查询 1.为什么使用视图 重用SQL语句 简化复杂的SQL操作。在编写查询后可以重用而不用知道它的基本查询细节 使用表的组成部分，而不是整个表 保护数据，可以给用户授予表的特定部分，而不是整个表的访问权限 更改数据格式和表示，视图可返回与底层表的表示和格式不同的数据  因为视图本身不包含数据，它的数据是使用时动态查询的，所以造成性能问题: 如果用">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="d:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cmysql_cross_join.png">
-<meta property="og:image" content="d:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cinner_join.png">
-<meta property="og:image" content="d:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cleft_join.png">
-<meta property="og:image" content="d:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cright_join.png">
-<meta property="og:updated_time" content="2019-08-18T14:21:40.865Z">
+<meta property="og:updated_time" content="2019-08-27T13:56:30.582Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL数据库连接查询">
-<meta name="twitter:description" content="基于sql99标准：推荐">
-<meta name="twitter:image" content="d:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cmysql_cross_join.png">
+<meta name="twitter:title" content="MySQL必知必会-03-视图-存储过程">
+<meta name="twitter:description" content="1.视图视图是虚拟的表，它只包含使用时动态检索数据的查询 1.为什么使用视图 重用SQL语句 简化复杂的SQL操作。在编写查询后可以重用而不用知道它的基本查询细节 使用表的组成部分，而不是整个表 保护数据，可以给用户授予表的特定部分，而不是整个表的访问权限 更改数据格式和表示，视图可返回与底层表的表示和格式不同的数据  因为视图本身不包含数据，它的数据是使用时动态查询的，所以造成性能问题: 如果用">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -174,20 +169,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-MySQL数据库连接查询" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-MySQL必知必会-03-视图-存储过程" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      MySQL数据库连接查询
+      MySQL必知必会-03-视图-存储过程
     </h1>
   
 
         
-        <a href="/2019/08/18/MySQL数据库连接查询/" class="archive-article-date">
-  	<time datetime="2019-08-18T11:52:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-18</time>
+        <a href="/2019/08/27/MySQL必知必会-03-视图-存储过程/" class="archive-article-date">
+  	<time datetime="2019-08-27T13:52:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-27</time>
 </a>
 
 	<!-- 不蒜子统计 -->
@@ -198,42 +193,116 @@
         
       </header>
       <div align="center" class="post-count">
-        字数：324字 | 预计阅读时长：1分钟
+        字数：1.3k字 | 预计阅读时长：5分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>基于sql99标准：推荐</p>
-<a id="more"></a>
+        <h3 id="1-视图"><a href="#1-视图" class="headerlink" title="1.视图"></a>1.视图</h3><p>视图是虚拟的表，它只包含使用时动态检索数据的查询</p>
+<h4 id="1-为什么使用视图"><a href="#1-为什么使用视图" class="headerlink" title="1.为什么使用视图"></a>1.为什么使用视图</h4><ul>
+<li>重用SQL语句</li>
+<li>简化复杂的SQL操作。在编写查询后可以重用而不用知道它的基本查询细节</li>
+<li>使用表的组成部分，而不是整个表</li>
+<li>保护数据，可以给用户授予表的特定部分，而不是整个表的访问权限</li>
+<li>更改数据格式和表示，视图可返回与底层表的表示和格式不同的数据</li>
+</ul>
+<p>因为视图本身不包含数据，它的数据是使用时动态查询的，所以造成<strong>性能问题:</strong></p>
+<p><strong>如果用了多个联结和过滤创建了复杂的视图，可能会发现性能下降的很厉害，因此在使用了大量视图的应用前，要进行测试</strong></p>
+<h4 id="2-视图的规则和限制"><a href="#2-视图的规则和限制" class="headerlink" title="2.视图的规则和限制"></a>2.视图的规则和限制</h4><ul>
+<li>与表一样，必须唯一命名</li>
+<li>对于可以创建的视图数量没有限制</li>
+<li>为了创建视图，必须要有足够的访问权限</li>
+<li>视图可以嵌套</li>
+<li>可以使用order by，如果select语句中也有order by，则会被select语句中的所覆盖</li>
+<li>视图不能索引，也不能有关联的触发器活默认值</li>
+<li>视图可以和表一起使用</li>
+</ul>
+<h4 id="3-使用视图"><a href="#3-使用视图" class="headerlink" title="3.使用视图"></a>3.使用视图</h4><ul>
+<li>create view viewname </li>
+<li>show create view viewname</li>
+<li>drop view viewname</li>
+<li>更新视图<ul>
+<li>先使用drop，在使用create</li>
+<li>create or replace view</li>
+</ul>
+</li>
+</ul>
+<p>案例：<br>    create view view_sc as select name, courses_id from students as s inner join course as c on s.id=c.stu_id;</p>
+<pre><code># 查询视图的数据
+select * from view_sc;</code></pre><p>视图是可以更新的，即对它们使用insert, update, delete等；</p>
+<p><strong>视图的另外几个个作用：</strong></p>
+<ul>
+<li>重新格式化检索出来的数据</li>
+<li>使用视图过滤不想要的数据</li>
+</ul>
+<p><strong>where子句和where子句：</strong></p>
+<ul>
+<li>若从视图检索数据时使用了视图，则两条where子句（一组是在视图中，一组是传给视图的）会自动组合</li>
+</ul>
+<p><strong>重点：（MySQL 5及之前版本）</strong></p>
+<p>并非所有的视图可以更新，如果MySQL不能正确的确定被更新的基数据，则不用需更新（包括插入和删除）<br>如果视图定义有一下操作，则不能更新：</p>
+<ul>
+<li>分组(使用group by和having)</li>
+<li>联结</li>
+<li>子查询</li>
+<li>并</li>
+<li>聚集函数(Min(), Count(), Sum()等)</li>
+<li>distinct</li>
+<li>导出(计算)列</li>
+</ul>
+<p>案例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 因为上面的视图中使用了inner join</span><br><span class="line">mysql&gt; insert into view_sc values(&quot;Mario&quot;, 1);</span><br><span class="line">ERROR 1394 (HY000): Can not insert into join view &apos;learn.view_sc&apos; without fields list</span><br></pre></td></tr></table></figure>
 
-<h3 id="1-准备数据"><a href="#1-准备数据" class="headerlink" title="1. 准备数据"></a>1. 准备数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">create database learn charset utf8;</span><br><span class="line"></span><br><span class="line">use learn</span><br><span class="line"></span><br><span class="line">create table students(</span><br><span class="line">	id int not null primary key auto_increment,</span><br><span class="line">    name varchar(10),</span><br><span class="line">    age int,</span><br><span class="line">    course_id int</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">create table course(</span><br><span class="line">	id int not null primary key auto_increment,</span><br><span class="line">    course_name varchar(20),</span><br><span class="line">    stu_id int</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">insert into students values(1, &quot;小明&quot;, 19, 1);</span><br><span class="line">insert into students values(2, &quot;小花&quot;, 19, 2);</span><br><span class="line">insert into students values(3, &quot;小菜&quot;, 20, null);</span><br><span class="line"></span><br><span class="line">insert into course values(1, &quot;python入门到放弃&quot;, 1);</span><br><span class="line">insert into course values(2, &quot;mysql从删库到跑路&quot;, 2);</span><br><span class="line">insert into course values(3, &quot;c语言入门&quot;, null);</span><br><span class="line">insert into course values(4, &quot;数据结构&quot;, null);</span><br></pre></td></tr></table></figure>
+<h3 id="2-存储过程"><a href="#2-存储过程" class="headerlink" title="2.存储过程"></a>2.存储过程</h3><p><strong>mysql 5及以后的版本支持存储过程</strong></p>
+<h5 id="1-为什么需要"><a href="#1-为什么需要" class="headerlink" title="1.为什么需要"></a>1.为什么需要</h5><p>通常会有一个完整的操作，需要多条SQL语句才能完成</p>
+<h5 id="2-使用理由"><a href="#2-使用理由" class="headerlink" title="2.使用理由"></a>2.使用理由</h5><ul>
+<li>通过把处理封装在容易使用的单元中，简化复杂操作</li>
+<li>由于不需要反复的建立一系列处理步骤，保证了数据的完整性</li>
+<li>简化对变动的管理(如果表名，列名，或者业务逻辑变化等，只需要修改存储过程)</li>
+<li>提高性能，因为存储过程比单条SQL执行速度快</li>
+</ul>
+<p><em>也就是说存储过程简单，安全，性能高</em></p>
+<h5 id="3-使用存储过程"><a href="#3-使用存储过程" class="headerlink" title="3.使用存储过程"></a>3.使用存储过程</h5><p>创建表products</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE products(</span><br><span class="line">id int auto_increment,</span><br><span class="line">prod_name varchar(10),</span><br><span class="line">prod_price decimal(10, 2),</span><br><span class="line">prod_addr varchar(10),</span><br><span class="line">PRIMARY KEY(id)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
-<p>查看表结构：<code>desc TABLE_NAME</code> ;</p>
-<h4 id="2-连接查询"><a href="#2-连接查询" class="headerlink" title="2. 连接查询"></a>2. 连接查询</h4><blockquote>
-<p>1.一共一下几种</p>
-</blockquote>
-<p>自连接</p>
-<p>内连接</p>
-<p>左外连接</p>
-<p>右外连接</p>
-<p>全外连接</p>
-<p>1.自连接 <code>cross join</code> -&gt;笛卡尔积</p>
-<p><code>select * from students cross join course;</code>  </p>
-<p><img src="D:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cmysql_cross_join.png" alt="cross_join"></p>
-<p>2.内连接: <code>inner join</code> -&gt;也就是求交集</p>
-<p><code>select * from students as s inner join course c where s.id=c.stu_id;</code></p>
-<p><img src="D:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cinner_join.png" alt="inner_join"></p>
-<ol start="3">
-<li>左外连接 <code>left outer join</code> -&gt;右表中没有得数据用null填充</li>
-</ol>
-<p><code>select * from students as s left join course c on s.id=c.stu_id;</code> </p>
-<p><img src="D:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cleft_join.png" alt="left_join"></p>
-<p>4.右外连接<code>right outer join</code> -&gt; 左表中没有的使用null填充</p>
-<p><code>select * from students as s right join course c on s.id=c.stu_id;</code></p>
-<p><img src="D:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cright_join.png" alt="right_join"></p>
-<p>5.全外连接<code>full outer join</code> -&gt; mysql 不支持</p>
-<p><code>select * from students as s full outer join course c on s.id=c.stu_id;</code></p>
-<p>写完了，似乎没什么意义。。。</p>
+<p>1.创建存储过程</p>
+<p>#存储过程productpricing()中可以接受参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 中间有空格</span><br><span class="line">DELIMITER //</span><br><span class="line"></span><br><span class="line">CREATE PROCEDURE productpricing()</span><br><span class="line">BEGIN</span><br><span class="line">    </span><br><span class="line">S   ELECT Avg(prod_price) As priceaverage</span><br><span class="line">    FROM products;</span><br><span class="line">    </span><br><span class="line">END //</span><br><span class="line">DELIMITER ;</span><br></pre></td></tr></table></figure>
+
+<p><strong><font color="red">重点：</font></strong></p>
+<p><font color="red">DELIMITER  //</font>的作用是告诉命令行<code>//</code>作为新的语句结束符，两个<code>//</code>中间的语句为存储过程的SQL，最后的<font color="red">DELIMITER  ; </font>是将命令行结束符换成 “ ; “</p>
+<p>2.调用存储过程：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CALL</span> productpricing();</span><br></pre></td></tr></table></figure>
+
+<p>3.删除存储过程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 注意：没有括号</span><br><span class="line">DROP PROCEDURE productpricing;</span><br><span class="line"></span><br><span class="line"># 若不存在则会报错</span><br><span class="line">DROP PROCEDURE productpricing IF EXISTS;</span><br></pre></td></tr></table></figure>
+
+<p>4.创建带参数的存储过程<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"> delimiter //</span><br><span class="line"> create procedure productpricing(</span><br><span class="line">  out pl decimal(8,2),</span><br><span class="line">  out ph decimal(8,2),</span><br><span class="line">  out pa decimal(8,3)</span><br><span class="line"> )</span><br><span class="line"> begin</span><br><span class="line">      select min(prod_price)</span><br><span class="line">      into pl</span><br><span class="line">      from products;</span><br><span class="line">      select max(prod_price)</span><br><span class="line">      into ph</span><br><span class="line">      from products;</span><br><span class="line">      select avg(prod_price)</span><br><span class="line">      into pa</span><br><span class="line">      from products;</span><br><span class="line">  end //</span><br><span class="line">delimiter ;</span><br></pre></td></tr></table></figure></p>
+<p>#调用带参数的存储过程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">call productpricing(@pricelow, @pricehigh, @priceaverage);</span><br></pre></td></tr></table></figure>
+
+<p>#检索存储过程的数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select @pricelow, @pricehigh, @priceaverage;</span><br></pre></td></tr></table></figure>
+
+<p>5.使用in和out参数的存储过程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">create procedure ordertotal(</span><br><span class="line">    in onumber int,</span><br><span class="line">    out ototal decimal(8,2)</span><br><span class="line">)</span><br><span class="line">begin</span><br><span class="line">    select sum(itemprice*quantity)</span><br><span class="line">    from orderitems</span><br><span class="line">    where ordernum = onumber</span><br><span class="line">    into ototal;</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+<p>#调用该存储过程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">call ordertotal(2005, @total);</span><br></pre></td></tr></table></figure>
+
+<p>#检索数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select @total;</span><br></pre></td></tr></table></figure>
+
+<p>6.复杂的存储过程</p>
+<p>统计订单的合计，并对某些顾客增加营业税</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">create procedure ordertotal(</span><br><span class="line">    in onumber int,</span><br><span class="line">    in taxable boolean,</span><br><span class="line">    out ototal decimal(8,2)</span><br><span class="line">) comment &apos;Obtain order total, optionally adding tax&apos;</span><br><span class="line">begin</span><br><span class="line">    </span><br><span class="line">    -- 定义两个局部变量，并设置默认值</span><br><span class="line">    declare total decimal(8, 2);</span><br><span class="line">    declare taxable int default 6;</span><br><span class="line">    </span><br><span class="line">    select Sum(items_price*quantity)</span><br><span class="line">    from orderitems</span><br><span class="line">    where order_num=onumber</span><br><span class="line">    into total;</span><br><span class="line">    </span><br><span class="line">    if taxable then</span><br><span class="line">        select total+(total/100*taxrate) into total;</span><br><span class="line">    end if;</span><br><span class="line">    </span><br><span class="line">    select total into ototal;</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+<p>#调用存储过程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">call ordertotal(20005, 0, @total);</span><br><span class="line">select @total;</span><br><span class="line"></span><br><span class="line">call ordertotal(20005, 1, @total);</span><br><span class="line">select @total;</span><br></pre></td></tr></table></figure>
+
+<p>7.检查存储过程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">show create procedure ordertotal;</span><br><span class="line"></span><br><span class="line">-- 列出所有的存储过程</span><br><span class="line">show create status;</span><br><span class="line">-- 限制其输出，可以使用 like</span><br><span class="line">show create status like &apos;ordertotal&apos;;</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -268,7 +337,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
         		</li>
       		
 		</ul>
@@ -324,7 +393,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://www.mgwcode.com/2019/08/18/MySQL数据库连接查询/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://www.mgwcode.com/2019/08/27/MySQL必知必会-03-视图-存储过程/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -338,18 +407,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/08/26/MySQL必知必会-01-查询-聚合函数(date)-分组-排序-/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          MySQL必知必会-01
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/08/18/Windows-Server-2012部署Django项目/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Windows Server 2012部署Django项目</div>
+    <a href="/2019/08/26/MySQL必知必会-02-子查询-组合查询-表结构，表数据修改等/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MySQL必知必会-02</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -376,7 +436,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-准备数据"><span class="toc-number">1.</span> <span class="toc-text">1. 准备数据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-连接查询"><span class="toc-number">1.1.</span> <span class="toc-text">2. 连接查询</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-视图"><span class="toc-number">1.</span> <span class="toc-text">1.视图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-为什么使用视图"><span class="toc-number">1.1.</span> <span class="toc-text">1.为什么使用视图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-视图的规则和限制"><span class="toc-number">1.2.</span> <span class="toc-text">2.视图的规则和限制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-使用视图"><span class="toc-number">1.3.</span> <span class="toc-text">3.使用视图</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-存储过程"><span class="toc-number">2.</span> <span class="toc-text">2.存储过程</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-为什么需要"><span class="toc-number">2.0.1.</span> <span class="toc-text">1.为什么需要</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-使用理由"><span class="toc-number">2.0.2.</span> <span class="toc-text">2.使用理由</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-使用存储过程"><span class="toc-number">2.0.3.</span> <span class="toc-text">3.使用存储过程</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>

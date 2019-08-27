@@ -6,25 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://www.mgwcode.com">
-  <title>MySQL数据库连接查询 | 个人博客</title>
+  <title>MySQL必知必会-01 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="基于sql99标准：推荐">
-<meta name="keywords" content="mysql">
+  <meta name="description" content="1.模糊查询like">
+<meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL数据库连接查询">
-<meta property="og:url" content="http://www.mgwcode.com/2019/08/18/MySQL数据库连接查询/index.html">
+<meta property="og:title" content="MySQL必知必会-01">
+<meta property="og:url" content="http://www.mgwcode.com/2019/08/26/MySQL必知必会-01-查询-聚合函数(date)-分组-排序-/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="基于sql99标准：推荐">
+<meta property="og:description" content="1.模糊查询like">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="d:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cmysql_cross_join.png">
-<meta property="og:image" content="d:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cinner_join.png">
-<meta property="og:image" content="d:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cleft_join.png">
-<meta property="og:image" content="d:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cright_join.png">
-<meta property="og:updated_time" content="2019-08-18T14:21:40.865Z">
+<meta property="og:updated_time" content="2019-08-26T12:43:08.356Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL数据库连接查询">
-<meta name="twitter:description" content="基于sql99标准：推荐">
-<meta name="twitter:image" content="d:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cmysql_cross_join.png">
+<meta name="twitter:title" content="MySQL必知必会-01">
+<meta name="twitter:description" content="1.模糊查询like">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -174,20 +169,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-MySQL数据库连接查询" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-MySQL必知必会-01-查询-聚合函数(date)-分组-排序-" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      MySQL数据库连接查询
+      MySQL必知必会-01
     </h1>
   
 
         
-        <a href="/2019/08/18/MySQL数据库连接查询/" class="archive-article-date">
-  	<time datetime="2019-08-18T11:52:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-18</time>
+        <a href="/2019/08/26/MySQL必知必会-01-查询-聚合函数(date)-分组-排序-/" class="archive-article-date">
+  	<time datetime="2019-08-26T12:36:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-26</time>
 </a>
 
 	<!-- 不蒜子统计 -->
@@ -198,42 +193,58 @@
         
       </header>
       <div align="center" class="post-count">
-        字数：324字 | 预计阅读时长：1分钟
+        字数：662字 | 预计阅读时长：2分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>基于sql99标准：推荐</p>
+        <p>1.模糊查询like</p>
 <a id="more"></a>
 
-<h3 id="1-准备数据"><a href="#1-准备数据" class="headerlink" title="1. 准备数据"></a>1. 准备数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">create database learn charset utf8;</span><br><span class="line"></span><br><span class="line">use learn</span><br><span class="line"></span><br><span class="line">create table students(</span><br><span class="line">	id int not null primary key auto_increment,</span><br><span class="line">    name varchar(10),</span><br><span class="line">    age int,</span><br><span class="line">    course_id int</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">create table course(</span><br><span class="line">	id int not null primary key auto_increment,</span><br><span class="line">    course_name varchar(20),</span><br><span class="line">    stu_id int</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">insert into students values(1, &quot;小明&quot;, 19, 1);</span><br><span class="line">insert into students values(2, &quot;小花&quot;, 19, 2);</span><br><span class="line">insert into students values(3, &quot;小菜&quot;, 20, null);</span><br><span class="line"></span><br><span class="line">insert into course values(1, &quot;python入门到放弃&quot;, 1);</span><br><span class="line">insert into course values(2, &quot;mysql从删库到跑路&quot;, 2);</span><br><span class="line">insert into course values(3, &quot;c语言入门&quot;, null);</span><br><span class="line">insert into course values(4, &quot;数据结构&quot;, null);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">尽量不要在搜索模式开头使用%</span><br><span class="line">例如：</span><br><span class="line"><span class="keyword">select</span> course_name <span class="keyword">from</span> course <span class="keyword">like</span> <span class="string">"%c语言"</span>;</span><br><span class="line">它会降低性能，即不能命中索引</span><br></pre></td></tr></table></figure>
 
-<p>查看表结构：<code>desc TABLE_NAME</code> ;</p>
-<h4 id="2-连接查询"><a href="#2-连接查询" class="headerlink" title="2. 连接查询"></a>2. 连接查询</h4><blockquote>
-<p>1.一共一下几种</p>
+<p>2.like和regexp</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1)<span class="keyword">select</span> <span class="keyword">id</span>, <span class="keyword">name</span> <span class="keyword">from</span> students <span class="keyword">where</span> <span class="keyword">name</span> <span class="keyword">like</span> <span class="string">"张三"</span>;</span><br><span class="line"></span><br><span class="line">2)<span class="keyword">select</span> <span class="keyword">id</span>, <span class="keyword">name</span> <span class="keyword">from</span> students <span class="keyword">where</span> <span class="keyword">name</span> regexp <span class="string">"张三"</span>;</span><br><span class="line"></span><br><span class="line">这两句话的意义不一样：</span><br><span class="line">第一句匹配的是整个字符串，也就是完全和like后面搜索模式相等的数据</span><br><span class="line"></span><br><span class="line">而 regexp 表示搜索子串，即包含张三的 id和name</span><br></pre></td></tr></table></figure>
+
+<p>3.排序</p>
+<pre><code>默认是asc， 即升序。</code></pre><p>4.字段拼接</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">多数DBMS使用 + 或者 || 进行拼接，但是mysql使用Concat()函数。</span><br><span class="line"></span><br><span class="line">例：</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">concat</span>(<span class="string">'学生ID和所选的课程：'</span>,<span class="keyword">id</span>, <span class="string">'('</span>, course_name, <span class="string">')'</span>) <span class="keyword">as</span> <span class="string">'学生选课信息'</span> <span class="keyword">from</span> course;</span><br></pre></td></tr></table></figure>
+
+<p>5.去掉字符串两端空格</p>
+<pre><code>RTrim() 去掉右边的空格
+LTrim() 左边的
+Trim() 两端的
+select LTrim(name) from students;</code></pre><p>6.正则表达式转义</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">\\. 表示.</span><br><span class="line">\\\ 表示\</span><br><span class="line">? 表示匹配0个或者1个</span><br></pre></td></tr></table></figure>
+
+<p>7.简单计算</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;select 2*3;</span><br><span class="line">&gt;6</span><br><span class="line"></span><br><span class="line">&gt;select Trim(' abc ');</span><br><span class="line">&gt;abc</span><br><span class="line"></span><br><span class="line">&gt;select Now();</span><br><span class="line">&gt;2019-08-24 15:49:22</span><br></pre></td></tr></table></figure>
+
+<p>8.函数 </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">相对于SQL来说，函数没有SQL的可移植性强（可运行在多个系统上的代码成为可移植性）</span><br><span class="line"></span><br><span class="line">还会降低应用程序性能</span><br><span class="line"></span><br><span class="line">***</span><br><span class="line">Soundex()</span><br><span class="line">返回串的SOUNDEX值，匹配发音类型的值</span><br><span class="line"></span><br><span class="line">例：搜索名字为mgw, 其联系名为： Y.Lee的人的信息</span><br><span class="line"><span class="comment"># 如果输入错误，写为 Y Lee则匹配不到该人信息，使用soundex就可以</span></span><br><span class="line"><span class="keyword">select</span> cust_name <span class="keyword">from</span> customers <span class="keyword">where</span> <span class="keyword">Soundex</span>(cust_contact)=<span class="keyword">Soundex</span>(Y.Lee);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>重点</strong></p>
+<p>9.时间函数</p>
+<blockquote>
+<p>1.查询某天的数据记录：</p>
 </blockquote>
-<p>自连接</p>
-<p>内连接</p>
-<p>左外连接</p>
-<p>右外连接</p>
-<p>全外连接</p>
-<p>1.自连接 <code>cross join</code> -&gt;笛卡尔积</p>
-<p><code>select * from students cross join course;</code>  </p>
-<p><img src="D:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cmysql_cross_join.png" alt="cross_join"></p>
-<p>2.内连接: <code>inner join</code> -&gt;也就是求交集</p>
-<p><code>select * from students as s inner join course c where s.id=c.stu_id;</code></p>
-<p><img src="D:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cinner_join.png" alt="inner_join"></p>
-<ol start="3">
-<li>左外连接 <code>left outer join</code> -&gt;右表中没有得数据用null填充</li>
-</ol>
-<p><code>select * from students as s left join course c on s.id=c.stu_id;</code> </p>
-<p><img src="D:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cleft_join.png" alt="left_join"></p>
-<p>4.右外连接<code>right outer join</code> -&gt; 左表中没有的使用null填充</p>
-<p><code>select * from students as s right join course c on s.id=c.stu_id;</code></p>
-<p><img src="D:%5Chexo%5Csource%5Cimages%5Carticle_image%5C2019.09%5Cright_join.png" alt="right_join"></p>
-<p>5.全外连接<code>full outer join</code> -&gt; mysql 不支持</p>
-<p><code>select * from students as s full outer join course c on s.id=c.stu_id;</code></p>
-<p>写完了，似乎没什么意义。。。</p>
+<p><em>必须使用date()函数，提示mysql仅将给出的日期与列中的的日期部分进行比较，不是将给出的日期和整个列值进行比较！！！</em></p>
+<p><code>select * from order_info where date(create_time)=&#39;2019-08-08&#39;;</code></p>
+<blockquote>
+<p>2.查询一个月的数据记录：<br>如：2019年9月</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> order_info <span class="keyword">where</span> <span class="built_in">date</span>(create_time) <span class="keyword">between</span> <span class="string">'2019-09-01'</span> <span class="keyword">and</span> <span class="string">'2019-09-30'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">#或者使用year()函数返回一个日期的年份，month()函数返回日期的月份</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> order_info <span class="keyword">where</span> <span class="keyword">Year</span>(create_time)=<span class="number">2019</span> <span class="keyword">and</span> <span class="keyword">Month</span>(create_time)=<span class="number">9</span>;</span><br></pre></td></tr></table></figure>
+
+<p>10.聚集函数的注意点</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">count(*) 对表中所有行的进行统计,不管是空值还是非空值</span><br><span class="line">count(column) 对表中特定列中具有值的行进行计数</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重要</span></span><br><span class="line">distinct column 必须使用列名，不能使用表达式</span><br><span class="line">如： distinct count(*) 是错误的</span><br></pre></td></tr></table></figure>
+
+<p>11.过滤分组</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">group by分组</span><br><span class="line">可以使用where子句进行过滤，where 和 having 的区别是where过滤行，having过滤分组; </span><br><span class="line">where是在分组前过滤，having是在分组后进行过滤</span><br><span class="line"></span><br><span class="line">having支持所有的where操作符，</span><br></pre></td></tr></table></figure>
+
+<p>12.select子句顺序</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line"><span class="keyword">from</span></span><br><span class="line"><span class="keyword">where</span></span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span></span><br><span class="line"><span class="keyword">having</span> </span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span></span><br><span class="line"><span class="keyword">limit</span></span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -268,7 +279,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
         		</li>
       		
 		</ul>
@@ -324,7 +335,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://www.mgwcode.com/2019/08/18/MySQL数据库连接查询/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://www.mgwcode.com/2019/08/26/MySQL必知必会-01-查询-聚合函数(date)-分组-排序-/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -338,18 +349,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/08/26/MySQL必知必会-01-查询-聚合函数(date)-分组-排序-/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/08/26/MySQL必知必会-02-子查询-组合查询-表结构，表数据修改等/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          MySQL必知必会-01
+          MySQL必知必会-02
         
       </div>
     </a>
   
   
-    <a href="/2019/08/18/Windows-Server-2012部署Django项目/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Windows Server 2012部署Django项目</div>
+    <a href="/2019/08/18/MySQL数据库连接查询/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MySQL数据库连接查询</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -376,7 +387,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-准备数据"><span class="toc-number">1.</span> <span class="toc-text">1. 准备数据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-连接查询"><span class="toc-number">1.1.</span> <span class="toc-text">2. 连接查询</span></a></li></ol></li></ol>
+                    目录，不存在的…
                     </div>
                 </span>
             </div>
