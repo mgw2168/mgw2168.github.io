@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://www.mgwcode.com">
   <title>MySQL必知必会-03-视图-存储过程 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.视图视图是虚拟的表，它只包含使用时动态检索数据的查询 1.为什么使用视图 重用SQL语句 简化复杂的SQL操作。在编写查询后可以重用而不用知道它的基本查询细节 使用表的组成部分，而不是整个表 保护数据，可以给用户授予表的特定部分，而不是整个表的访问权限 更改数据格式和表示，视图可返回与底层表的表示和格式不同的数据  因为视图本身不包含数据，它的数据是使用时动态查询的，所以造成性能问题: 如果用">
+  <meta name="description" content="1.视图视图是虚拟的表，它只包含使用时动态检索数据的查询">
 <meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL必知必会-03-视图-存储过程">
 <meta property="og:url" content="http://www.mgwcode.com/2019/08/27/MySQL必知必会-03-视图-存储过程/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="1.视图视图是虚拟的表，它只包含使用时动态检索数据的查询 1.为什么使用视图 重用SQL语句 简化复杂的SQL操作。在编写查询后可以重用而不用知道它的基本查询细节 使用表的组成部分，而不是整个表 保护数据，可以给用户授予表的特定部分，而不是整个表的访问权限 更改数据格式和表示，视图可返回与底层表的表示和格式不同的数据  因为视图本身不包含数据，它的数据是使用时动态查询的，所以造成性能问题: 如果用">
+<meta property="og:description" content="1.视图视图是虚拟的表，它只包含使用时动态检索数据的查询">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-27T13:56:30.582Z">
+<meta property="og:updated_time" content="2019-08-27T14:02:11.381Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL必知必会-03-视图-存储过程">
-<meta name="twitter:description" content="1.视图视图是虚拟的表，它只包含使用时动态检索数据的查询 1.为什么使用视图 重用SQL语句 简化复杂的SQL操作。在编写查询后可以重用而不用知道它的基本查询细节 使用表的组成部分，而不是整个表 保护数据，可以给用户授予表的特定部分，而不是整个表的访问权限 更改数据格式和表示，视图可返回与底层表的表示和格式不同的数据  因为视图本身不包含数据，它的数据是使用时动态查询的，所以造成性能问题: 如果用">
+<meta name="twitter:description" content="1.视图视图是虚拟的表，它只包含使用时动态检索数据的查询">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -199,6 +199,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="1-视图"><a href="#1-视图" class="headerlink" title="1.视图"></a>1.视图</h3><p>视图是虚拟的表，它只包含使用时动态检索数据的查询</p>
+<a id="more"></a>
+
 <h4 id="1-为什么使用视图"><a href="#1-为什么使用视图" class="headerlink" title="1.为什么使用视图"></a>1.为什么使用视图</h4><ul>
 <li>重用SQL语句</li>
 <li>简化复杂的SQL操作。在编写查询后可以重用而不用知道它的基本查询细节</li>
