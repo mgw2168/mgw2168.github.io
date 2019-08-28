@@ -68,7 +68,7 @@
 			</ul>
 		</nav>
 		<nav> 
-			总文章数 7
+			总文章数 8
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -168,6 +168,125 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-MySQL必知必会-05-事务-用户管理-数据类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/28/MySQL必知必会-05-事务-用户管理-数据类型/">MySQL必知必会-05-事务-用户管理-数据类型</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/28/MySQL必知必会-05-事务-用户管理-数据类型/" class="archive-article-date">
+  	<time datetime="2019-08-28T13:52:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-28</time>
+</a>
+
+        
+      </header>
+      <div align="center" class="post-count">
+        字数：388字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-事务"><a href="#1-事务" class="headerlink" title="1.事务"></a>1.事务</h3><h4 id="1-事务处理"><a href="#1-事务处理" class="headerlink" title="1.事务处理"></a>1.事务处理</h4><p>事务处理的几个术语：</p>
+<ul>
+<li><strong>事务</strong>(transaction)指一组SQL语句</li>
+<li><strong>回退</strong>(rollback)指撤销指定SQL语句的过程<font color="red">只能在事务内使用</font></li>
+<li><strong>提交</strong>(commit)指将为存储的SQL语句的执行结果写入数据库表</li>
+<li><strong>保留点</strong>(savepoint)指事务处理设置的临时占位符，可以对它发布回退(与回退整个事务的处理不同)</li>
+</ul>
+<p>案例：</p>
+<p>a:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">select * from ordertotals;</span><br><span class="line">start transaction;</span><br><span class="line">delete from ordertotals;</span><br><span class="line">select * from ordertotals;</span><br><span class="line">rollback;</span><br><span class="line">select * from ordertotals;</span><br></pre></td></tr></table></figure>
+
+<p>b:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">start transaction;</span><br><span class="line">delete from orderitems where order_num=20010;</span><br><span class="line">delete from orders where order_num=20010;</span><br><span class="line">commit</span><br></pre></td></tr></table></figure>
+
+<p><font color="red">事务用来处理select,insert,delete语句，不能回退select语句，也不能回退create和drop操作；ccommit和rollback执行后，事务会自动关闭</font></p>
+<p>c:</p>
+<p>使用保留点savepoint</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">savepoint delete1;</span><br><span class="line">rollback delete1;</span><br></pre></td></tr></table></figure>
+
+<p>保留点越多越好！！</p>
+<p>保留点在事务处理完成后自动释放，5版本以来可以使用release savepoint明确的释放保留点；</p>
+<p>d:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set autocommit=0;</span><br></pre></td></tr></table></figure>
+
+<p>表示不自动提交事务，直到autocommit为真</p>
+<h3 id="2-用户管理"><a href="#2-用户管理" class="headerlink" title="2.用户管理"></a>2.用户管理</h3><h4 id="1-创建用户"><a href="#1-创建用户" class="headerlink" title="1.创建用户"></a>1.创建用户</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create user ben identified by &quot;p@$$w0rd&quot;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-重命名"><a href="#2-重命名" class="headerlink" title="2.重命名"></a>2.重命名</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rename user ben to bforta;</span><br></pre></td></tr></table></figure>
+
+<p>也可以使用update命令</p>
+<h4 id="3-删除"><a href="#3-删除" class="headerlink" title="3.删除"></a>3.删除</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop user bforta;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-权限分配"><a href="#4-权限分配" class="headerlink" title="4.权限分配"></a>4.权限分配</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">show grants for bforta;</span><br><span class="line">grant select on crashcourse.* to bforta;</span><br></pre></td></tr></table></figure>
+
+<p>grant的反操作为revoke</p>
+<h4 id="5-修改密码"><a href="#5-修改密码" class="headerlink" title="5.修改密码"></a>5.修改密码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set password for bforta = Password(&quot;mgw123456&quot;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-数据库维护"><a href="#3-数据库维护" class="headerlink" title="3.数据库维护"></a>3.数据库维护</h3><p>analyze table students; 检查表键是否正确<br>check table xxx; 针对问题检查</p>
+<h3 id="4-mysql数据类型"><a href="#4-mysql数据类型" class="headerlink" title="4.mysql数据类型"></a>4.mysql数据类型</h3><h4 id="1-串数据类型"><a href="#1-串数据类型" class="headerlink" title="1.串数据类型"></a>1.串数据类型</h4><p><img src="/images/article_image/mysql/string.png" alt="varchar"></p>
+<h4 id="2-数值数据类型"><a href="#2-数值数据类型" class="headerlink" title="2.数值数据类型"></a>2.数值数据类型</h4><p><img src="/images/article_image/mysql/number.png" alt="number"></p>
+<h4 id="3-日期和时间数据类型"><a href="#3-日期和时间数据类型" class="headerlink" title="3.日期和时间数据类型"></a>3.日期和时间数据类型</h4><p><img src="/images/article_image/mysql/date.png" alt="date"></p>
+<h4 id="4-二进制数据类型"><a href="#4-二进制数据类型" class="headerlink" title="4.二进制数据类型"></a>4.二进制数据类型</h4><p><img src="/images/article_image/mysql/erjinzhi.png" alt="Binary"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/28/MySQL必知必会-05-事务-用户管理-数据类型/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-MySQL必知必会-04-游标-触发器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
