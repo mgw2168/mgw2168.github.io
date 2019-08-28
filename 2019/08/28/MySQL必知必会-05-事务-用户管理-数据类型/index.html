@@ -8,22 +8,22 @@
   <link rel="dns-prefetch" href="http://www.mgwcode.com">
   <title>MySQL必知必会-05-事务-用户管理-数据类型 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.事务1.事务处理事务处理的几个术语：  事务(transaction)指一组SQL语句 回退(rollback)指撤销指定SQL语句的过程只能在事务内使用 提交(commit)指将为存储的SQL语句的执行结果写入数据库表 保留点(savepoint)指事务处理设置的临时占位符，可以对它发布回退(与回退整个事务的处理不同)  案例： a: 123456select * from ordertot">
+  <meta name="description" content="1.事务">
 <meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL必知必会-05-事务-用户管理-数据类型">
 <meta property="og:url" content="http://www.mgwcode.com/2019/08/28/MySQL必知必会-05-事务-用户管理-数据类型/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="1.事务1.事务处理事务处理的几个术语：  事务(transaction)指一组SQL语句 回退(rollback)指撤销指定SQL语句的过程只能在事务内使用 提交(commit)指将为存储的SQL语句的执行结果写入数据库表 保留点(savepoint)指事务处理设置的临时占位符，可以对它发布回退(与回退整个事务的处理不同)  案例： a: 123456select * from ordertot">
+<meta property="og:description" content="1.事务">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://www.mgwcode.com/images/article_image/mysql/string.png">
 <meta property="og:image" content="http://www.mgwcode.com/images/article_image/mysql/number.png">
 <meta property="og:image" content="http://www.mgwcode.com/images/article_image/mysql/date.png">
 <meta property="og:image" content="http://www.mgwcode.com/images/article_image/mysql/erjinzhi.png">
-<meta property="og:updated_time" content="2019-08-28T13:59:04.346Z">
+<meta property="og:updated_time" content="2019-08-28T13:59:28.049Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL必知必会-05-事务-用户管理-数据类型">
-<meta name="twitter:description" content="1.事务1.事务处理事务处理的几个术语：  事务(transaction)指一组SQL语句 回退(rollback)指撤销指定SQL语句的过程只能在事务内使用 提交(commit)指将为存储的SQL语句的执行结果写入数据库表 保留点(savepoint)指事务处理设置的临时占位符，可以对它发布回退(与回退整个事务的处理不同)  案例： a: 123456select * from ordertot">
+<meta name="twitter:description" content="1.事务">
 <meta name="twitter:image" content="http://www.mgwcode.com/images/article_image/mysql/string.png">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
@@ -203,7 +203,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-事务"><a href="#1-事务" class="headerlink" title="1.事务"></a>1.事务</h3><h4 id="1-事务处理"><a href="#1-事务处理" class="headerlink" title="1.事务处理"></a>1.事务处理</h4><p>事务处理的几个术语：</p>
+        <h3 id="1-事务"><a href="#1-事务" class="headerlink" title="1.事务"></a>1.事务</h3><a id="more"></a>
+
+<h4 id="1-事务处理"><a href="#1-事务处理" class="headerlink" title="1.事务处理"></a>1.事务处理</h4><p>事务处理的几个术语：</p>
 <ul>
 <li><strong>事务</strong>(transaction)指一组SQL语句</li>
 <li><strong>回退</strong>(rollback)指撤销指定SQL语句的过程<font color="red">只能在事务内使用</font></li>
