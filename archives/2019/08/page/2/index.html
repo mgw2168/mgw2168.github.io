@@ -6,20 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://www.mgwcode.com">
-  <title>Vue基础语法-01 | 个人博客</title>
+  <title>Archives: 2019/8 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.vue基础语法">
-<meta name="keywords" content="前端">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Vue基础语法-01">
-<meta property="og:url" content="http://www.mgwcode.com/2019/08/31/Vue基础语法-01/index.html">
+  <meta name="description" content="做有意思的人，做有意思的事">
+<meta property="og:type" content="website">
+<meta property="og:title" content="个人博客">
+<meta property="og:url" content="http://www.mgwcode.com/archives/2019/08/page/2/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="1.vue基础语法">
+<meta property="og:description" content="做有意思的人，做有意思的事">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-31T08:23:25.312Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vue基础语法-01">
-<meta name="twitter:description" content="1.vue基础语法">
+<meta name="twitter:title" content="个人博客">
+<meta name="twitter:description" content="做有意思的人，做有意思的事">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -169,246 +167,53 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Vue基础语法-01" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Vue基础语法-01
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/08/09/hadoop学习笔记/" class="archive-article-date">
+  	<time datetime="2019-08-09T01:08:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
+</a>
+
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/08/09/hadoop学习笔记/">hadoop学习笔记</a>
     </h1>
   
 
-        
-        <a href="/2019/08/31/Vue基础语法-01/" class="archive-article-date">
-  	<time datetime="2019-08-31T08:22:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-31</time>
-</a>
+        <div class="article-info info-on-right">
+          
+          
 
-	<!-- 不蒜子统计 -->
-	<span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
-		  <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
-	</span>
-
-        
-      </header>
-      <div align="center" class="post-count">
-        字数：626字 | 预计阅读时长：3分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-vue基础语法"><a href="#1-vue基础语法" class="headerlink" title="1.vue基础语法"></a>1.vue基础语法</h3><a id="more"></a>
-
-<h4 id="1-vue数据，事件，方法"><a href="#1-vue数据，事件，方法" class="headerlink" title="1.vue数据，事件，方法"></a>1.vue数据，事件，方法</h4><p>案例:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"first"</span>&gt;</span><br><span class="line">       &lt;div @click=<span class="string">"handleClick"</span>&gt;&#123;&#123; content &#125;&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">   &lt;/</span>div&gt;</span><br><span class="line">   &lt;script&gt;</span><br><span class="line">       <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">           el: <span class="string">"#first"</span>,</span><br><span class="line">           data: &#123;</span><br><span class="line">               content: <span class="string">"点击这段文字！"</span></span><br><span class="line">           &#125;,</span><br><span class="line">           methods: &#123;</span><br><span class="line">               handleClick: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                   alert(<span class="string">"我要变身了！！"</span>)</span><br><span class="line">                   <span class="keyword">this</span>.content = <span class="string">"hello world "</span></span><br><span class="line">               &#125;</span><br><span class="line">           &#125;,</span><br><span class="line">       &#125;)</span><br><span class="line">   &lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="2-vue属性绑定和双向数据绑定"><a href="#2-vue属性绑定和双向数据绑定" class="headerlink" title="2.vue属性绑定和双向数据绑定"></a>2.vue属性绑定和双向数据绑定</h4><p>input 输入框中输入相应的文字，下面div的显示会相应改变</p>
-<ul>
-<li><code>v-bind:title</code>的简写方式: <code>:title</code></li>
-<li><code>v-model:xxx</code>双向数据绑定<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"root"</span>&gt;</span><br><span class="line">    &lt;div v-bind:title=<span class="string">"title"</span>&gt;</span><br><span class="line">        <span class="keyword">this</span> is a title！！</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;input type="text" v-model:value="content"&gt;</span></span><br><span class="line"><span class="regexp">    &lt;!-- &lt;input type="text" v-model="content"&gt; 也行--&gt;</span></span><br><span class="line"><span class="regexp">    &lt;div&gt;&#123;&#123;content&#125;&#125;&lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">    new Vue(&#123;</span></span><br><span class="line"><span class="regexp">        el: "#root",</span></span><br><span class="line"><span class="regexp">        data: &#123;</span></span><br><span class="line"><span class="regexp">            title: "this is a title!",</span></span><br><span class="line"><span class="regexp">            content: "this is a content!"</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &#125;)</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h4 id="3-计算属性和侦听器"><a href="#3-计算属性和侦听器" class="headerlink" title="3.计算属性和侦听器"></a>3.计算属性和侦听器</h4><ul>
-<li><code>computed</code>计算属性: 当任意一个参数发生变化时才会重新计算，否则使用上次的缓存结果</li>
-<li><code>watch</code>侦听器:当侦听的属性发生变化是进行操作<br>案例：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"root"</span>&gt;</span><br><span class="line">        姓：&lt;input type=<span class="string">"text"</span> v-model=<span class="string">"firstName"</span>&gt;</span><br><span class="line">        名：&lt;input type=<span class="string">"text"</span> v-model=<span class="string">"lastName"</span>&gt;</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &#123;&#123;fullName&#125;&#125;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        &lt;div&gt;&#123;&#123;count&#125;&#125;&lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">    new Vue(&#123;</span></span><br><span class="line"><span class="regexp">        el: "#root",</span></span><br><span class="line"><span class="regexp">        data: &#123;</span></span><br><span class="line"><span class="regexp">            firstName: "",</span></span><br><span class="line"><span class="regexp">            lastName: "",</span></span><br><span class="line"><span class="regexp">            count: 0,</span></span><br><span class="line"><span class="regexp">        &#125;,</span></span><br><span class="line"><span class="regexp">        computed: &#123;</span></span><br><span class="line"><span class="regexp">            fullName: function()&#123;</span></span><br><span class="line"><span class="regexp">                return this.firstName + ' ' + this.lastName</span></span><br><span class="line"><span class="regexp">            &#125;</span></span><br><span class="line"><span class="regexp">        &#125;,</span></span><br><span class="line"><span class="regexp">        watch: &#123;</span></span><br><span class="line"><span class="regexp">            fullName: function()&#123;</span></span><br><span class="line"><span class="regexp">                    this.count ++ </span></span><br><span class="line"><span class="regexp">                &#125;</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/ firstName: function()&#123;</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/     this.count ++</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/ &#125;,</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/ lastName: function()&#123;</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/     this.count ++</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/ &#125;</span></span><br><span class="line"><span class="regexp">        &#125;,</span></span><br><span class="line"><span class="regexp">    &#125;)</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h4 id="4-v-if-v-show-v-for"><a href="#4-v-if-v-show-v-for" class="headerlink" title="4.v-if, v-show, v-for"></a>4.v-if, v-show, v-for</h4><blockquote>
-<p>虽然<code>v-if</code>和<code>v-show</code>看起来效果一样，但是有区别：</p>
-<ul>
-<li><code>v-if</code>会删dom节点</li>
-<li><code>v-show</code> 是添加一个<code>display:none</code>的css样式</li>
-</ul>
-</blockquote>
-<p><strong>如果只是一次显示或隐藏，使用v-if；如果是频繁的显示隐藏，则推荐使用v-show；</strong></p>
-<p><font color="red"><code>v-for：</code></font></p>
-<p>v-for循环可对象时，需要使用key，他可以提高渲染效率并且key值不能重复。这里使用了index，但是还是会有问题。高级用法中<font color="red">特别注意</font></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;root&quot;&gt;</span><br><span class="line">    &lt;!-- &lt;div v-if=&quot;show&quot;&gt;content&lt;/div&gt; --&gt;</span><br><span class="line">    &lt;div v-show=&quot;show&quot;&gt;content&lt;/div&gt;</span><br><span class="line">    &lt;input type=&quot;button&quot; @click=&quot;handleClick&quot; value=&quot;toggle&quot;&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;li v-for=&quot;(item, index) of list&quot; :key=&quot;index&quot;&gt;&#123;&#123; item &#125;&#125;&lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    new Vue(&#123;</span><br><span class="line">        el: &quot;#root&quot;,</span><br><span class="line">        data: &#123;</span><br><span class="line">            content: &quot;this is a content!&quot;,</span><br><span class="line">            show: true,</span><br><span class="line">            list: [1, 2, 3]</span><br><span class="line">        &#125;,</span><br><span class="line">        methods: &#123;</span><br><span class="line">            handleClick: function()&#123;</span><br><span class="line">                this.show = !this.show</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://www.mgwcode.com/2019/08/31/Vue基础语法-01/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/08/31/Vue基础语法-02-组件/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Vue基础语法-02-组件
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/08/31/css-and-js-and-jquery/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">css_and_js_and_jquery</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-vue基础语法"><span class="toc-number">1.</span> <span class="toc-text">1.vue基础语法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-vue数据，事件，方法"><span class="toc-number">1.1.</span> <span class="toc-text">1.vue数据，事件，方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-vue属性绑定和双向数据绑定"><span class="toc-number">1.2.</span> <span class="toc-text">2.vue属性绑定和双向数据绑定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-计算属性和侦听器"><span class="toc-number">1.3.</span> <span class="toc-text">3.计算属性和侦听器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-v-if-v-show-v-for"><span class="toc-number">1.4.</span> <span class="toc-text">4.v-if, v-show, v-for</span></a></li></ol></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
-  
-  <!-- 来必力评论 -->
-  
-    <!-- 来必力City版安装代码 -->
-<div id="lv-container" data-id="city" data-uid="MTAyMC80NTkyOS8yMjQ0MA==">
-	<script type="text/javascript">
-   (function(d, s) {
-       var j, e = d.getElementsByTagName(s)[0];
-
-       if (typeof LivereTower === 'function') { return; }
-
-       j = d.createElement(s);
-       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-       j.async = true;
-
-       e.parentNode.insertBefore(j, e);
-   })(document, 'script');
-	</script>
-<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
-</div>
-<!-- City版安装代码已完成 -->
-
+    </div></section>
   
 
-  
-
-  
-
+    
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/archives/2019/08/">&laquo; Prev</a><a class="page-number" href="/archives/2019/08/">1</a><span class="page-number current">2</span>
+    </nav>
   
 
 
@@ -444,8 +249,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
