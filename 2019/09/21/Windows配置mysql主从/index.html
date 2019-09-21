@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://www.mgwcode.com">
   <title>Windows配置mysql主从 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="环境： mysql 8.0.17 windows 10  1. 在同一台机器上安装两个mysql安装略…. 这里是采用不同的端口，分别为3306,3307 2. master配置：1. 配置my.inimy.ini配置文件： 1234567[mysqld]port = 3306					#master库端口号server_id = 1				#服务器的唯一ID号，主从之间不能冲突，默认是1">
+  <meta name="description" content="环境： mysql 8.0.17 windows 10">
 <meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Windows配置mysql主从">
 <meta property="og:url" content="http://www.mgwcode.com/2019/09/21/Windows配置mysql主从/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="环境： mysql 8.0.17 windows 10  1. 在同一台机器上安装两个mysql安装略…. 这里是采用不同的端口，分别为3306,3307 2. master配置：1. 配置my.inimy.ini配置文件： 1234567[mysqld]port = 3306					#master库端口号server_id = 1				#服务器的唯一ID号，主从之间不能冲突，默认是1">
+<meta property="og:description" content="环境： mysql 8.0.17 windows 10">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-21T04:25:47.702Z">
+<meta property="og:updated_time" content="2019-09-21T12:47:59.174Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Windows配置mysql主从">
-<meta name="twitter:description" content="环境： mysql 8.0.17 windows 10  1. 在同一台机器上安装两个mysql安装略…. 这里是采用不同的端口，分别为3306,3307 2. master配置：1. 配置my.inimy.ini配置文件： 1234567[mysqld]port = 3306					#master库端口号server_id = 1				#服务器的唯一ID号，主从之间不能冲突，默认是1">
+<meta name="twitter:description" content="环境： mysql 8.0.17 windows 10">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -198,13 +198,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-
-<blockquote>
+        <blockquote>
 <p> 环境：</p>
 <p>mysql 8.0.17</p>
 <p>windows 10</p>
 </blockquote>
+<a id="more"></a>
+
 <h3 id="1-在同一台机器上安装两个mysql"><a href="#1-在同一台机器上安装两个mysql" class="headerlink" title="1. 在同一台机器上安装两个mysql"></a>1. 在同一台机器上安装两个mysql</h3><p>安装略….</p>
 <p>这里是采用不同的端口，分别为3306,3307</p>
 <h3 id="2-master配置："><a href="#2-master配置：" class="headerlink" title="2. master配置："></a>2. master配置：</h3><h4 id="1-配置my-ini"><a href="#1-配置my-ini" class="headerlink" title="1. 配置my.ini"></a>1. 配置my.ini</h4><p>my.ini配置文件：</p>
