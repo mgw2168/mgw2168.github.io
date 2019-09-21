@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="个人博客">
 <meta property="og:description" content="环境： mysql 8.0.17 windows 10  1. 在同一台机器上安装两个mysql安装略…. 2. master配置：1. 配置my.ini1234567[mysqld]port = 3306					#master库端口号server_id = 1				#服务器的唯一ID号，主从之间不能冲突，默认是1log-bin=mysql-bin			#启动binlog 日志功能#">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-21T02:31:22.326Z">
+<meta property="og:updated_time" content="2019-09-21T02:35:22.783Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Windows配置mysql主从">
 <meta name="twitter:description" content="环境： mysql 8.0.17 windows 10  1. 在同一台机器上安装两个mysql安装略…. 2. master配置：1. 配置my.ini1234567[mysqld]port = 3306					#master库端口号server_id = 1				#服务器的唯一ID号，主从之间不能冲突，默认是1log-bin=mysql-bin			#启动binlog 日志功能#">
@@ -193,7 +193,7 @@
         
       </header>
       <div align="center" class="post-count">
-        字数：715字 | 预计阅读时长：3分钟
+        字数：763字 | 预计阅读时长：3分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -224,6 +224,12 @@
 <p><strong>注意：</strong>这两项都为Yes, 即为配置成功</p>
 <p><font color="red">   Slave_IO_Running: Yes</font> </p>
 <p><font color="red">               Slave_SQL_Running: Yes</font> </p>
+<h3 id="4-测试"><a href="#4-测试" class="headerlink" title="4.测试"></a>4.测试</h3><p>master中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create table mgw_test(</span><br><span class="line">    -&gt; id int not null primary key auto_increment,</span><br><span class="line">    -&gt; name varchar(10),</span><br><span class="line">    -&gt; age int);</span><br><span class="line">Query OK, 0 rows affected (0.03 sec)</span><br></pre></td></tr></table></figure>
+
+<p>slave中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show tables;</span><br><span class="line">+------------------+</span><br><span class="line">| Tables_in_dongyi |</span><br><span class="line">+------------------+</span><br><span class="line">| mgw_test         |</span><br><span class="line">+------------------+</span><br><span class="line">1 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
 <p><strong>采坑：</strong> 由于server_id 重复，导致<code>Slave_IO_Running: No</code> </p>
 <p>设置全局server_id即可：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET GLOBAL server_id=2;</span><br></pre></td></tr></table></figure>
@@ -361,7 +367,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-在同一台机器上安装两个mysql"><span class="toc-number">1.</span> <span class="toc-text">1. 在同一台机器上安装两个mysql</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-master配置："><span class="toc-number">2.</span> <span class="toc-text">2. master配置：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-配置my-ini"><span class="toc-number">2.1.</span> <span class="toc-text">1. 配置my.ini</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-配置给从库使用的用户"><span class="toc-number">2.2.</span> <span class="toc-text">2. 配置给从库使用的用户</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-slave配置"><span class="toc-number">3.</span> <span class="toc-text">3. slave配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-配置从库my-ini"><span class="toc-number">3.1.</span> <span class="toc-text">1.配置从库my.ini</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-添加主库信息"><span class="toc-number">3.2.</span> <span class="toc-text">2.添加主库信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-启动从库复制功能"><span class="toc-number">3.3.</span> <span class="toc-text">3.启动从库复制功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-查看从库复制状态"><span class="toc-number">3.4.</span> <span class="toc-text">4.查看从库复制状态</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-在同一台机器上安装两个mysql"><span class="toc-number">1.</span> <span class="toc-text">1. 在同一台机器上安装两个mysql</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-master配置："><span class="toc-number">2.</span> <span class="toc-text">2. master配置：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-配置my-ini"><span class="toc-number">2.1.</span> <span class="toc-text">1. 配置my.ini</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-配置给从库使用的用户"><span class="toc-number">2.2.</span> <span class="toc-text">2. 配置给从库使用的用户</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-slave配置"><span class="toc-number">3.</span> <span class="toc-text">3. slave配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-配置从库my-ini"><span class="toc-number">3.1.</span> <span class="toc-text">1.配置从库my.ini</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-添加主库信息"><span class="toc-number">3.2.</span> <span class="toc-text">2.添加主库信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-启动从库复制功能"><span class="toc-number">3.3.</span> <span class="toc-text">3.启动从库复制功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-查看从库复制状态"><span class="toc-number">3.4.</span> <span class="toc-text">4.查看从库复制状态</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-测试"><span class="toc-number">4.</span> <span class="toc-text">4.测试</span></a></li></ol>
                     </div>
                 </span>
             </div>

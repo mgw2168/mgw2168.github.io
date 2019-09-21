@@ -188,7 +188,7 @@
         
       </header>
       <div align="center" class="post-count">
-        字数：715字 | 预计阅读时长：3分钟
+        字数：763字 | 预计阅读时长：3分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -219,6 +219,12 @@
 <p><strong>注意：</strong>这两项都为Yes, 即为配置成功</p>
 <p><font color="red">   Slave_IO_Running: Yes</font> </p>
 <p><font color="red">               Slave_SQL_Running: Yes</font> </p>
+<h3 id="4-测试"><a href="#4-测试" class="headerlink" title="4.测试"></a>4.测试</h3><p>master中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create table mgw_test(</span><br><span class="line">    -&gt; id int not null primary key auto_increment,</span><br><span class="line">    -&gt; name varchar(10),</span><br><span class="line">    -&gt; age int);</span><br><span class="line">Query OK, 0 rows affected (0.03 sec)</span><br></pre></td></tr></table></figure>
+
+<p>slave中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show tables;</span><br><span class="line">+------------------+</span><br><span class="line">| Tables_in_dongyi |</span><br><span class="line">+------------------+</span><br><span class="line">| mgw_test         |</span><br><span class="line">+------------------+</span><br><span class="line">1 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
 <p><strong>采坑：</strong> 由于server_id 重复，导致<code>Slave_IO_Running: No</code> </p>
 <p>设置全局server_id即可：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET GLOBAL server_id=2;</span><br></pre></td></tr></table></figure>
