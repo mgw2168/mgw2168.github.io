@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://www.mgwcode.com">
-  <title>MySQL必知必会-02 | 个人博客</title>
+  <title>Windows配置mysql主从 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.子查询1.查询每个用户的订单总数">
+  <meta name="description" content="环境： mysql 8.0.17 windows 10  1. 在同一台机器上安装两个mysql安装略…. 2. master配置：1. 配置my.ini1234567[mysqld]port = 3306					#master库端口号server_id = 1				#服务器的唯一ID号，主从之间不能冲突，默认是1log-bin=mysql-bin			#启动binlog 日志功能#">
 <meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL必知必会-02">
-<meta property="og:url" content="http://www.mgwcode.com/2019/08/26/MySQL必知必会-02-子查询-组合查询-表结构，表数据修改等/index.html">
+<meta property="og:title" content="Windows配置mysql主从">
+<meta property="og:url" content="http://www.mgwcode.com/2019/09/21/Windows配置mysql主从/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="1.子查询1.查询每个用户的订单总数">
+<meta property="og:description" content="环境： mysql 8.0.17 windows 10  1. 在同一台机器上安装两个mysql安装略…. 2. master配置：1. 配置my.ini1234567[mysqld]port = 3306					#master库端口号server_id = 1				#服务器的唯一ID号，主从之间不能冲突，默认是1log-bin=mysql-bin			#启动binlog 日志功能#">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-26T12:45:17.674Z">
+<meta property="og:updated_time" content="2019-09-21T02:31:22.326Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL必知必会-02">
-<meta name="twitter:description" content="1.子查询1.查询每个用户的订单总数">
+<meta name="twitter:title" content="Windows配置mysql主从">
+<meta name="twitter:description" content="环境： mysql 8.0.17 windows 10  1. 在同一台机器上安装两个mysql安装略…. 2. master配置：1. 配置my.ini1234567[mysqld]port = 3306					#master库端口号server_id = 1				#服务器的唯一ID号，主从之间不能冲突，默认是1log-bin=mysql-bin			#启动binlog 日志功能#">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -169,20 +169,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-MySQL必知必会-02-子查询-组合查询-表结构，表数据修改等" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Windows配置mysql主从" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      MySQL必知必会-02
+      Windows配置mysql主从
     </h1>
   
 
         
-        <a href="/2019/08/26/MySQL必知必会-02-子查询-组合查询-表结构，表数据修改等/" class="archive-article-date">
-  	<time datetime="2019-08-26T12:39:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-26</time>
+        <a href="/2019/09/21/Windows配置mysql主从/" class="archive-article-date">
+  	<time datetime="2019-09-21T00:45:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-21</time>
 </a>
 
 	<!-- 不蒜子统计 -->
@@ -193,95 +193,42 @@
         
       </header>
       <div align="center" class="post-count">
-        字数：785字 | 预计阅读时长：3分钟
+        字数：715字 | 预计阅读时长：3分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-子查询"><a href="#1-子查询" class="headerlink" title="1.子查询"></a>1.子查询</h3><p>1.查询每个用户的订单总数</p>
-<a id="more"></a>
+        <a id="more"></a>
 
 <blockquote>
-<p>分析：</p>
-<ul>
-<li>查询id为1的用户的订单总数</li>
-</ul>
+<p> 环境：</p>
+<p>mysql 8.0.17</p>
+<p>windows 10</p>
 </blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> order_info <span class="keyword">where</span> <span class="keyword">id</span>=<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="1-在同一台机器上安装两个mysql"><a href="#1-在同一台机器上安装两个mysql" class="headerlink" title="1. 在同一台机器上安装两个mysql"></a>1. 在同一台机器上安装两个mysql</h3><p>安装略….</p>
+<h3 id="2-master配置："><a href="#2-master配置：" class="headerlink" title="2. master配置："></a>2. master配置：</h3><h4 id="1-配置my-ini"><a href="#1-配置my-ini" class="headerlink" title="1. 配置my.ini"></a>1. 配置my.ini</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">port = 3306					#master库端口号</span><br><span class="line">server_id = 1				#服务器的唯一ID号，主从之间不能冲突，默认是1</span><br><span class="line">log-bin=mysql-bin			#启动binlog 日志功能</span><br><span class="line"># binlog-do-db=dongyi			#主从复制的数据库，若复制主库所有database，则可以不用配置此项</span><br><span class="line">binlog-ignore-db=mysql		</span><br><span class="line">binlog-format = mixed       #日志的记录格式，默认是mixed，推荐也是这个</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<ul>
-<li>查询每个用户的订单数</li>
-</ul>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span>, username</span><br><span class="line">(<span class="keyword">select</span> <span class="keyword">count</span>(*) </span><br><span class="line">    <span class="keyword">from</span> order_info</span><br><span class="line">    <span class="keyword">where</span> order_info.user_id=users.id</span><br><span class="line">    ) <span class="keyword">as</span> orders</span><br><span class="line"><span class="keyword">from</span> <span class="keyword">users</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> username;</span><br></pre></td></tr></table></figure>
+<h4 id="2-配置给从库使用的用户"><a href="#2-配置给从库使用的用户" class="headerlink" title="2. 配置给从库使用的用户"></a>2. 配置给从库使用的用户</h4><p><strong>说明：</strong> mgw为我的用户名，这里mgw账号必须要有<strong>操作数据库</strong>的权限，ip是从库的ip，由于在同一台机器，所以写127.0.0.1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE USER &apos;mgw&apos;@&apos;127.0.0.1&apos; IDENTIFIED BY &apos;PASSWORD&apos;; </span><br><span class="line">GRANT REPLICATION SLAVE ON *.* TO &apos;mgw&apos;@&apos;127.0.0.1&apos;; </span><br><span class="line">FLUSH PRIVILEGES;  # 刷新权限，立即生效</span><br></pre></td></tr></table></figure>
 
-<h3 id="2-组合查询"><a href="#2-组合查询" class="headerlink" title="2.组合查询"></a>2.组合查询</h3><p>1.使用union</p>
-<pre><code>union必须由两条或者两条以上的select语句组成
-union的每个查询必须包含相同的列，表达式或者聚集函数，但是各个列可以按照不同的列给出
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">SHOW MASTER STATUS; #查看主服务器的状态，并记录 File和Position字段，从服务器要使用到</span><br><span class="line"></span><br><span class="line">mysql&gt; show master status;</span><br><span class="line">+------------------+----------+--------------+------------------+-------------------+</span><br><span class="line">| File             | Position | Binlog_Do_DB | Binlog_Ignore_DB | Executed_Gtid_Set |</span><br><span class="line">+------------------+----------+--------------+------------------+-------------------+</span><br><span class="line">| mysql-bin.000001 |     2658 | dongyi       | mysql            |                   |</span><br><span class="line">+------------------+----------+--------------+------------------+-------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
 
-union自动去除重复的行
-如果要返回所有的匹配行，可以使用 union all，即不取消重复的行</code></pre><p>2.对组合查询结果集排序</p>
-<pre><code>使用排序必须将order by放在最后一个select语句后面</code></pre><h3 id="3-全文搜索"><a href="#3-全文搜索" class="headerlink" title="3.全文搜索"></a>3.全文搜索</h3><p>1.MyISAM支持全文索引，InnoDB不支持</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建致辞全文本搜索的表</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> products(</span><br><span class="line"><span class="keyword">id</span> <span class="built_in">int</span> auto_increment,</span><br><span class="line"><span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">10</span>),</span><br><span class="line">user_id <span class="built_in">int</span>,</span><br><span class="line">create_time datetime,</span><br><span class="line">note_text <span class="built_in">text</span>,</span><br><span class="line"><span class="comment"># 指定索引类型</span></span><br><span class="line">primary <span class="keyword">key</span>(<span class="keyword">id</span>),</span><br><span class="line">fulltext(note_text)</span><br><span class="line">) <span class="keyword">engine</span>=MyISAM;</span><br></pre></td></tr></table></figure>
+<h3 id="3-slave配置"><a href="#3-slave配置" class="headerlink" title="3. slave配置"></a>3. slave配置</h3><h4 id="1-配置从库my-ini"><a href="#1-配置从库my-ini" class="headerlink" title="1.配置从库my.ini"></a>1.配置从库my.ini</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">server-id = 2  #服务器唯一ID号，不能重复</span><br><span class="line">log-bin   = mysql-bin  </span><br><span class="line">binlog-format = mixed  #可以不用配置，默认是mixed，在没有配置log-bin时，这个值并不生效</span><br><span class="line">#从库的本地事务日志更新，默认从主库同步过来的操作记录并不写入从库的本地事务日志，</span><br><span class="line">#会影响到我们在从库上做 事务日志 备份功能，此处开启</span><br><span class="line">#如果不会在从库上做事务日志备份（增量备份）功能，建议不开启，减少磁盘IO</span><br><span class="line">log-slave-updates = 1</span><br></pre></td></tr></table></figure>
 
-<p>举例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Match()指定被搜索的列，Against()指定要使用的搜索表达式</span></span><br><span class="line"><span class="keyword">select</span> note_text</span><br><span class="line"><span class="keyword">from</span> products</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">Match</span>(note_text) Against(<span class="string">'rabbit'</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="2-添加主库信息"><a href="#2-添加主库信息" class="headerlink" title="2.添加主库信息"></a>2.添加主库信息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CHANGE MASTER TO MASTER_HOST=&apos;127.0.0.1&apos;,MASTER_PORT=3306,MASTER_USER=&apos;mgw&apos;,MASTER_PASSWORD=&apos;123456&apos;,MASTER_LOG_FILE=&apos;mysql-bin.000001&apos;,MASTER_LOG_POS=2658;</span><br><span class="line"></span><br><span class="line"># MASTER_LOG_FILE 和 MASTER_LOG_POS为master的日志文件和位置</span><br></pre></td></tr></table></figure>
 
-<p>使用扩展：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> note_text</span><br><span class="line"><span class="keyword">from</span> products</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">Match</span>(note_text) Against(<span class="string">'rabbit'</span> <span class="keyword">with</span> <span class="keyword">query</span> expansion);</span><br></pre></td></tr></table></figure>
+<h4 id="3-启动从库复制功能"><a href="#3-启动从库复制功能" class="headerlink" title="3.启动从库复制功能"></a>3.启动从库复制功能</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">START SLAVE; #启动从复制功能</span><br><span class="line"></span><br><span class="line">STOP SLAVE; #停止从复制功能的命令</span><br><span class="line"></span><br><span class="line">RESET SLAVE; #重置从复制功能的配置，会清除 master.info 和 relay-log.info 两个文件</span><br></pre></td></tr></table></figure>
 
-<h3 id="4-布尔文本搜索"><a href="#4-布尔文本搜索" class="headerlink" title="4.布尔文本搜索"></a>4.布尔文本搜索</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 性能较低，随着数据量的增多而降低</span></span><br><span class="line"><span class="keyword">select</span> note_text</span><br><span class="line"><span class="keyword">from</span> products</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">Match</span>(note_text) Against(<span class="string">'rabbit'</span> <span class="keyword">in</span> <span class="built_in">boolean</span> <span class="keyword">mode</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="4-查看从库复制状态"><a href="#4-查看从库复制状态" class="headerlink" title="4.查看从库复制状态"></a>4.查看从库复制状态</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">SHOW SLAVE STATUS\G;</span><br><span class="line"></span><br><span class="line">mysql&gt; show slave status\G</span><br><span class="line">*************************** 1. row ***************************</span><br><span class="line">               Slave_IO_State: Waiting for master to send event</span><br><span class="line">                  Master_Host: 127.0.0.1</span><br><span class="line">                  Master_User: mgw</span><br><span class="line">                  Master_Port: 3306</span><br><span class="line">                Connect_Retry: 60</span><br><span class="line">              Master_Log_File: mysql-bin.000001</span><br><span class="line">          Read_Master_Log_Pos: 2658</span><br><span class="line">               Relay_Log_File: MY-20190430BUDR-relay-bin.000003</span><br><span class="line">                Relay_Log_Pos: 523</span><br><span class="line">        Relay_Master_Log_File: mysql-bin.000001</span><br><span class="line">             Slave_IO_Running: Yes</span><br><span class="line">            Slave_SQL_Running: Yes</span><br><span class="line">              Replicate_Do_DB:</span><br><span class="line">          Replicate_Ignore_DB:</span><br><span class="line">           Replicate_Do_Table:</span><br><span class="line">       Replicate_Ignore_Table:</span><br><span class="line">      Replicate_Wild_Do_Table:</span><br><span class="line">  Replicate_Wild_Ignore_Table:</span><br><span class="line">                   Last_Errno: 0</span><br><span class="line">                   Last_Error:</span><br><span class="line">                 Skip_Counter: 0</span><br><span class="line">          Exec_Master_Log_Pos: 2658</span><br><span class="line">              Relay_Log_Space: 741</span><br><span class="line">              Until_Condition: None</span><br><span class="line">               Until_Log_File:</span><br><span class="line">                Until_Log_Pos: 0</span><br><span class="line">           Master_SSL_Allowed: No</span><br><span class="line">           Master_SSL_CA_File:</span><br><span class="line">           Master_SSL_CA_Path:</span><br><span class="line">              Master_SSL_Cert:</span><br><span class="line">            Master_SSL_Cipher:</span><br><span class="line">               Master_SSL_Key:</span><br><span class="line">        Seconds_Behind_Master: 0</span><br><span class="line">Master_SSL_Verify_Server_Cert: No</span><br><span class="line">                Last_IO_Errno: 0</span><br><span class="line">                Last_IO_Error:</span><br><span class="line">               Last_SQL_Errno: 0</span><br><span class="line">               Last_SQL_Error:</span><br><span class="line">  Replicate_Ignore_Server_Ids:</span><br><span class="line">             Master_Server_Id: 1</span><br><span class="line">                  Master_UUID: eb57479b-a6d0-11e9-b4e1-507b9d99d971</span><br><span class="line">             Master_Info_File: mysql.slave_master_info</span><br><span class="line">                    SQL_Delay: 0</span><br><span class="line">          SQL_Remaining_Delay: NULL</span><br><span class="line">      Slave_SQL_Running_State: Slave has read all relay log; waiting for more updates</span><br><span class="line">           Master_Retry_Count: 86400</span><br><span class="line">                  Master_Bind:</span><br><span class="line">      Last_IO_Error_Timestamp:</span><br><span class="line">     Last_SQL_Error_Timestamp:</span><br><span class="line">               Master_SSL_Crl:</span><br><span class="line">           Master_SSL_Crlpath:</span><br><span class="line">           Retrieved_Gtid_Set:</span><br><span class="line">            Executed_Gtid_Set:</span><br><span class="line">                Auto_Position: 0</span><br><span class="line">         Replicate_Rewrite_DB:</span><br><span class="line">                 Channel_Name:</span><br><span class="line">           Master_TLS_Version:</span><br><span class="line">       Master_public_key_path:</span><br><span class="line">        Get_master_public_key: 0</span><br><span class="line">            Network_Namespace:</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
 
-<h3 id="5-插入数据"><a href="#5-插入数据" class="headerlink" title="5.插入数据"></a>5.插入数据</h3><p>因为insert插入比较耗时，所以进行插入时可以指定low_priority来降低优先级</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">low_priority</span> <span class="keyword">into</span></span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong>这两项都为Yes, 即为配置成功</p>
+<p><font color="red">   Slave_IO_Running: Yes</font> </p>
+<p><font color="red">               Slave_SQL_Running: Yes</font> </p>
+<p><strong>采坑：</strong> 由于server_id 重复，导致<code>Slave_IO_Running: No</code> </p>
+<p>设置全局server_id即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET GLOBAL server_id=2;</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>insert select</p>
-</blockquote>
-<p>将一个select语句的执行结果作为数据插入</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> course(<span class="keyword">id</span>, course_name, stu_id) <span class="keyword">select</span> <span class="keyword">id</span>, course_name, stu_id <span class="keyword">from</span> course_out;</span><br></pre></td></tr></table></figure>
 
-<h3 id="6-更新数据"><a href="#6-更新数据" class="headerlink" title="6.更新数据"></a>6.更新数据</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">执行<span class="keyword">update</span>是，若要更新多个字段的值，则在<span class="keyword">set</span>后面多加几条需要修改的字段</span><br><span class="line"></span><br><span class="line"><span class="keyword">update</span> students <span class="keyword">set</span> <span class="keyword">name</span>=<span class="string">"张三"</span>, age=<span class="number">23</span> <span class="keyword">where</span> <span class="keyword">id</span>=<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-
-<p><strong>ignore关键字：</strong><br>如果使用update更新多行数据时，中途出现错误，则会导致整个update被取消</p>
-<p>若要使它发生错误，继续更新，则需要使用ignore关键字：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> <span class="keyword">ignore</span> students...</span><br></pre></td></tr></table></figure>
-
-<h3 id="7-删除数据"><a href="#7-删除数据" class="headerlink" title="7.删除数据"></a>7.删除数据</h3><p>若要更快的删除表中的所有数据</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">truncate</span> <span class="keyword">table</span></span><br><span class="line">其实<span class="keyword">truncate</span>是删除原来的表并重新创建一个新表，不是逐行删除数据的</span><br></pre></td></tr></table></figure>
-
-<h3 id="8-创建表"><a href="#8-创建表" class="headerlink" title="8.创建表"></a>8.创建表</h3><p>如果不存在则创建表;</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> xxx <span class="keyword">if</span> <span class="keyword">not</span> exists...</span><br></pre></td></tr></table></figure>
-
-<h3 id="9-主键"><a href="#9-主键" class="headerlink" title="9.主键"></a>9.主键</h3><p>主键必须唯一，并且不能为null，若有多个列，则这些列的组合列必须唯一</p>
-<h3 id="10-默认值"><a href="#10-默认值" class="headerlink" title="10.默认值"></a>10.默认值</h3><p>mysql和其他DBMS一样，不允许使用函数作为默认值</p>
-<p>使用默认值，而不是null列，特别是用于计算或者数据分组的列</p>
-<h3 id="11-外键不能跨引擎"><a href="#11-外键不能跨引擎" class="headerlink" title="11.外键不能跨引擎"></a>11.外键不能跨引擎</h3><ul>
-<li>混用引擎的最大缺陷是外键不能跨引擎</li>
-<li>即使使用同一个引擎的表不能引用使用不同引擎的表的外键</li>
-</ul>
-<h3 id="12-修改表结构"><a href="#12-修改表结构" class="headerlink" title="12.修改表结构"></a>12.修改表结构</h3><blockquote>
-<p>1.添加字段</p>
-</blockquote>
-<p>alter table xxx add xxx 类型，约束等;</p>
-<blockquote>
-<p>2.删除表字段</p>
-</blockquote>
-<p>alter table xxx drop column xxx;</p>
-<blockquote>
-<p>3.修改字段类型</p>
-</blockquote>
-<p>alter table xxx modify xxx 类型，约束;</p>
-<blockquote>
-<p>4.修改字段名</p>
-</blockquote>
-<p>alter table 表名 change 旧字段名 新字段名 类型，约束;</p>
-<h3 id="13-修改表名"><a href="#13-修改表名" class="headerlink" title="13.修改表名"></a>13.修改表名</h3><p>rename table old_name to new_name;</p>
-<blockquote>
-<p>多个表重命名：</p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">rename</span> <span class="keyword">table</span> </span><br><span class="line">old_name1 <span class="keyword">to</span> new_name1，</span><br><span class="line">old_name2 <span class="keyword">to</span> new_name2，</span><br><span class="line">...;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -371,7 +318,7 @@ union自动去除重复的行
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://www.mgwcode.com/2019/08/26/MySQL必知必会-02-子查询-组合查询-表结构，表数据修改等/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://www.mgwcode.com/2019/09/21/Windows配置mysql主从/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -385,18 +332,9 @@ union自动去除重复的行
   
 <nav id="article-nav">
   
-    <a href="/2019/08/27/MySQL必知必会-03-视图-存储过程/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          MySQL必知必会-03-视图-存储过程
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/08/26/MySQL必知必会-01-查询-聚合函数(date)-分组-排序-/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">MySQL必知必会-01</div>
+    <a href="/2019/08/31/Vue基础语法-02-组件/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Vue基础语法-02-组件</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -423,7 +361,7 @@ union自动去除重复的行
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-子查询"><span class="toc-number">1.</span> <span class="toc-text">1.子查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-组合查询"><span class="toc-number">2.</span> <span class="toc-text">2.组合查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-全文搜索"><span class="toc-number">3.</span> <span class="toc-text">3.全文搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-布尔文本搜索"><span class="toc-number">4.</span> <span class="toc-text">4.布尔文本搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-插入数据"><span class="toc-number">5.</span> <span class="toc-text">5.插入数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-更新数据"><span class="toc-number">6.</span> <span class="toc-text">6.更新数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-删除数据"><span class="toc-number">7.</span> <span class="toc-text">7.删除数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-创建表"><span class="toc-number">8.</span> <span class="toc-text">8.创建表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-主键"><span class="toc-number">9.</span> <span class="toc-text">9.主键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-默认值"><span class="toc-number">10.</span> <span class="toc-text">10.默认值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-外键不能跨引擎"><span class="toc-number">11.</span> <span class="toc-text">11.外键不能跨引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-修改表结构"><span class="toc-number">12.</span> <span class="toc-text">12.修改表结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-修改表名"><span class="toc-number">13.</span> <span class="toc-text">13.修改表名</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-在同一台机器上安装两个mysql"><span class="toc-number">1.</span> <span class="toc-text">1. 在同一台机器上安装两个mysql</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-master配置："><span class="toc-number">2.</span> <span class="toc-text">2. master配置：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-配置my-ini"><span class="toc-number">2.1.</span> <span class="toc-text">1. 配置my.ini</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-配置给从库使用的用户"><span class="toc-number">2.2.</span> <span class="toc-text">2. 配置给从库使用的用户</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-slave配置"><span class="toc-number">3.</span> <span class="toc-text">3. slave配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-配置从库my-ini"><span class="toc-number">3.1.</span> <span class="toc-text">1.配置从库my.ini</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-添加主库信息"><span class="toc-number">3.2.</span> <span class="toc-text">2.添加主库信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-启动从库复制功能"><span class="toc-number">3.3.</span> <span class="toc-text">3.启动从库复制功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-查看从库复制状态"><span class="toc-number">3.4.</span> <span class="toc-text">4.查看从库复制状态</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
